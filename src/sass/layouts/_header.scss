@@ -1,0 +1,24 @@
+.header {
+  background-image: url('../images/header/home-background-mobile@1x.jpg');
+  background-color: red;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  max-width: 767px;
+}
+.header_list {
+  display: flex;
+  padding-top: 44px;
+}
+.header_item--logo {
+  margin-right: auto;
+}
+.header_item--margin {
+  margin-right: 40px;
+}
+.header_item {
+  color: #ffffff;
+}
+.icon-films {
+  fill: #ffffff;
+}
