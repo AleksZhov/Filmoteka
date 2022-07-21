@@ -61,10 +61,12 @@
   font-size: 12px;
   line-height: 14px;
 }
-.header_item:hover {
+.header_item:hover,
+.header_btn:focus {
   border-bottom: 3px solid red;
 }
-.header_item--logo:hover {
+.header_item--logo:hover,
+.header_btn:focus {
   border-bottom: none;
 }
 .icon-films {
@@ -92,7 +94,7 @@
   position: absolute;
   right: 0%;
 }
-.span_header {
+.header_logo {
   display: none;
 }
 @media screen and (min-width: 768px) {
@@ -106,7 +108,7 @@
   .header_icon {
     right: 26%;
   }
-  .span_header {
+  .header_logo {
     display: inline-block;
     margin-left: 10px;
     font-weight: 500;
@@ -121,5 +123,83 @@
 @media screen and (min-width: 1280px) {
   .header_icon {
     right: 36%;
+  }
+}
+// =================library-style====================
+.header_library {
+  background-image: url('../images/header/library-background-mobile@1x.jpg');
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  max-width: 767px;
+
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header_library {
+      background-image: url('../images/header/library-background-mobile@2x.jpg');
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header_library {
+    max-width: 1199px;
+    background-image: url('../images/header/library-background-tablet@1x.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header_library {
+      background-image: url('../images/header/library-background-tablet@2x.jpg');
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .header_library {
+    max-width: 1280px;
+    background-image: url('../images/header/library-background-desktop@1x.jpg');
+    margin: 0 auto;
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header_library {
+      background-image: url('../images/header/library-background-desktop@2x.jpg');
+    }
+  }
+}
+.header_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  padding-bottom: 60px;
+}
+.header_btn {
+  height: 44px;
+  width: 130px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+}
+.header_btn:hover,
+.header_btn:focus {
+  background-color: #ff6b01;
+  border: none;
+}
+.header_btn-Watched {
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .header_btn-Watched {
+    margin-right: 30px;
+  }
+  .header_btn {
+    width: 152px;
   }
 }
