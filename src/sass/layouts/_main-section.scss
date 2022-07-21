@@ -1,21 +1,32 @@
-
 .film-card__img {
     width: 280px;
     height: 402px;
 
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
 
     @media screen and (min-width: $tablet) {
             width: 336px;
             height: 455px;
-            margin-bottom: 8px;
+            // margin-bottom: 8px;
         }
                  @media screen and (min-width: $desktop) {
                      width: 395px;
                     height: 574px;
-                    margin-bottom: 12px;
+                    // margin-bottom: 12px;
                  }
 }
+
+.film-card__item:first-child {
+    margin-bottom: 10px;
+    
+        @media screen and (min-width: $tablet) {
+            margin-bottom: 8px;
+        }
+        @media screen and (min-width: $desktop) {
+            margin-bottom: 12px;
+        }
+}
+
 
 .film-card__title {
     // font-family: 'Roboto';
@@ -23,9 +34,7 @@
     font-size: 12px;
     line-height: 1.17;
     text-transform: uppercase;
-    // color: $backdrop-color;
-
-    margin-bottom: 5px;
+    // color: ;
 }
 
 .film-card__text {
@@ -33,39 +42,37 @@
         font-weight: 500;
         font-size: 12px;
         line-height: 1.33;
-    // color: $accent-bg-color;
+    // color:;
 }
 
-.film-card__item--flex{
+.film-card__flex{
+    margin-top: 5px;
     display: flex;
     align-items: center;
-
-    
 }
 
 
 .film-card__list:not(:last-child) {
     margin-bottom: 20px;
-
-    @media screen and (min-width: $tablet) {
-    }
-    
-        @media screen and (min-width: $desktop) {}
 }
 
+.main-section{
+    padding-top: 20px;
 
-
-// @media screen and (min-width: $tablet) {}
-
-// @media screen and (min-width: $desktop) {}
-
-
+    @media screen and (min-width: $tablet) {
+            padding-top: 60px;
+        }
+}
 
 .js-container {
+    display: flex;
+    flex-wrap: wrap;
+    
     @media screen and (min-width: $tablet) {
-            
+            gap: 32px 32px;
         }
     
-        @media screen and (min-width: $desktop) {}
-   
+        @media screen and (min-width: $desktop) {
+            gap: 32px 15px;
+        }
 }
