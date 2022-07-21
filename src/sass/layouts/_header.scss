@@ -1,13 +1,51 @@
 .header {
   background-image: url('../images/header/home-background-mobile@1x.jpg');
-  background-color: red;
+  background-color: #000000;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   max-width: 767px;
+
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header {
+      background-image: url('../images/header/home-background-mobile@2x.jpg');
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    max-width: 1199px;
+    background-image: url('../images/header/home-background-tablet@1x.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header {
+      background-image: url('../images/header/home-background-tablet@2x.jpg');
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .header {
+    max-width: 1280px;
+    background-image: url('../images/header/home-background-desktop@1x.jpg');
+    margin: 0 auto;
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .header {
+      background-image: url('../images/header/home-background-desktop@2x.jpg');
+    }
+  }
 }
 .header_list {
   display: flex;
+  align-items: center;
   padding-top: 44px;
 }
 .header_item--logo {
@@ -18,7 +56,70 @@
 }
 .header_item {
   color: #ffffff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+.header_item:hover {
+  border-bottom: 3px solid red;
+}
+.header_item--logo:hover {
+  border-bottom: none;
 }
 .icon-films {
   fill: #ffffff;
+}
+.header_form {
+  padding-bottom: 90px;
+  margin-top: 60px;
+  position: relative;
+}
+.header_input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 16px;
+  border-bottom: 1px solid #ffffff;
+  min-width: 280px;
+}
+.header_input::placeholder {
+  color: #ffffff;
+}
+.header_icon {
+  position: absolute;
+  right: 0%;
+}
+.span_header {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .header_input {
+    width: 336px;
+  }
+  .header_form {
+    display: flex;
+    justify-content: center;
+  }
+  .header_icon {
+    right: 26%;
+  }
+  .span_header {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .header_item--logo {
+    display: flex;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header_icon {
+    right: 36%;
+  }
 }
