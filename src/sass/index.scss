@@ -1,2 +1,7 @@
-@import './common';
-@import './example';
+@import './utils/variables';
+@import './utils/breakpoints';
+
+@import './base/reset';
+
+@import './layouts/header';
+@import './layouts/footer';
