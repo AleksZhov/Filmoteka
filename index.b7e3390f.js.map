@@ -1,0 +1,1 @@
+{"mappings":"AACEA,QAAQC,IAAI","sources":["src/js/example.js"],"sourcesContent":["export default function hi() {\n  console.log('Привіт');\n}\n"],"names":["console","log"],"version":3,"file":"index.b7e3390f.js.map"}
