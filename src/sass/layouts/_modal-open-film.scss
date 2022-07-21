@@ -1,0 +1,74 @@
+.modal {
+    // display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+.modal__conteiner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.modal__body {
+    margin: auto;
+    width: 806px;
+    height: 558px;
+    background-color: white;
+    text-align: left;
+    padding: 40px 12px;
+    position: relative;
+}
+.modal__close {
+    position: absolute;
+    top: 8;
+    right: 8;
+}
+.modal__icon {
+    width: 30px;
+    height: 30px;
+}
+.modal__poster {
+    display: block;
+    background-color:grey ;
+    width: 375px;
+    height: 478px;
+    margin: 5px;
+}
+.modal__film {
+    display: flex;
+}
+.film__about {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    width: 391px;
+    height: 184px;
+}
+.film {
+    margin-left: 16px;
+}
+
+.film__details {
+    display: flex;
+    margin: 20px 0;
+}
+.film__details--static {
+    margin-right: 83px;
+}
+.add-watched {
+    margin-left: 8px;
+    width: 136px;
+    height: 44px;
+    border-radius: 5px;
+    background: #FF6B01;
+}
+.add-queue {
+    margin-left: 15px;
+    width: 136px;
+    height: 44px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+}

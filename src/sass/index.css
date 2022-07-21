@@ -1,0 +1,141 @@
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+}
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.film-card__img {
+  width: 280px;
+  height: 402px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .film-card__img {
+    width: 336px;
+    height: 455px;
+    margin-bottom: 8px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .film-card__img {
+    width: 395px;
+    height: 574px;
+    margin-bottom: 12px;
+  }
+}
+
+.film-card__title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.film-card__text {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.film-card__item--flex {
+  display: flex;
+  align-items: center;
+}
+
+.film-card__list:not(:last-child) {
+  margin-bottom: 20px;
+}
+.film-card__list {
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal {
+  background-color: #fff;
+  width: 806px;
+  height: 558px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.modals--visible {
+  display: block;
+}
+
+.modal-overlay--visible {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease-in-out;
+}/*# sourceMappingURL=index.css.map */
