@@ -10,3 +10,6 @@ filmApi().then(data => console.log('DATA RESULT', data.results));
 // const markup = renderMarkupPopular();
 
 // div.insertAdjacentElement('beforeend', markup);
+
+import hi from './js/example';
+hi();
