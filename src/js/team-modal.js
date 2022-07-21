@@ -3,16 +3,24 @@ import 'animate.css';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import * as basicLightbox from 'basiclightbox';
 
-import sashaUrl from '../images/team/oleksandr.jpg';
-import yuraUrl from '../images/team/yurii.jpg';
-import serhiiUrl from '../images/team/sergii.jpg';
-import olegUrl from '../images/team/oleg.jpg';
+import sashaUrl from './images/team/oleksandr.jpg';
+import yuraUrl from './images/team/yurii.jpg';
+import serhiiUrl from './images/team/sergii.jpg';
+import olegUrl from './images/team/oleg.jpg';
+import volodymyrUrl from './images/team/volodymyr.jpg';
+import yodaUrl from './images/team/yoda.jpg';
 
-import spriteUrl from '../images/sprite.svg';
+import spriteUrl from './images/sprite.svg';
 
 // ---------------canvas-confetti--------------------
-import showConfetti from './confetti';
+// import showConfetti from './js/confetti';
 import confetti from 'canvas-confetti';
+function showConfetti() {
+  confetti.create(document.getElementById('canvas'), {
+    resize: true,
+    useWorker: true,
+  })({ particleCount: 300, spread: 200, zIndex: 2021 });
+}
 
 // ---------------------------------------------------------
 const developers = [
@@ -49,6 +57,14 @@ const developers = [
   },
   // 5
   {
+    nameDev: 'YODA',
+    surnameDev: 'Master',
+    photo: `${yodaUrl}`,
+    roleDev: 'Front-end Developer',
+    gitDev: 'https://github.com/',
+  },
+  // 6
+  {
     nameDev: 'Володимир',
     surnameDev: 'Бондаренко',
     photo: `${volodymyrUrl}`,
@@ -62,15 +78,15 @@ const markupTeamCard = developers
     return `
 <li class="team-card">
     <img src="${photo}" alt="${nameDev}" class="team-image">
-    <p class="team-name">${surnameDev}<br>${nameDev}</p>
+    <p class="team-name">${nameDev}<br>${surnameDev}</p>
     <p class="team-role">${roleDev}</p>
-    <a href="${gitDev}" target="_blank" class="team-git"><svg class="logo__icon" width="24" height="24">
-      <use href="${spriteUrl}#github"></use>
+    <a href="${gitDev}" target="_blank" class="team-git"><svg class="git__icon" width="24" height="24">
+      <use href="${spriteUrl}#icon-github-logo"></use>
     </svg></a>
 </li>`;
   })
   .join('');
-const markupModal = `<p class="team-title">JAVA<span class="clover"></span>YODA</p>
+const markupModal = `<p class="team-title">JAVA YODA <span class="yoda"></span></p>
  <button type='button' class='modal-window__close-btn' data-modal-close>
     <span class='material-icons'>close</span>
   </button>
@@ -79,7 +95,7 @@ ${markupTeamCard}
 </ul>
 </div>`;
 const container = document.querySelector('.developers');
-
+console.log(container);
 container.addEventListener('click', openModal);
 
 const modal = basicLightbox.create(markupModal);
