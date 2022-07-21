@@ -3,14 +3,14 @@ import 'animate.css';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import * as basicLightbox from 'basiclightbox';
 
-import sashaUrl from './images/team/oleksandr.jpg';
-import yuraUrl from './images/team/yurii.jpg';
-import serhiiUrl from './images/team/sergii.jpg';
-import olegUrl from './images/team/oleg.jpg';
-import volodymyrUrl from './images/team/volodymyr.jpg';
-import yodaUrl from './images/team/yoda.jpg';
+import sashaUrl from '../images/team/oleksandr.jpg';
+import yuraUrl from '../images/team/yurii.jpg';
+import serhiiUrl from '../images/team/sergii.jpg';
+import olegUrl from '../images/team/oleg.jpg';
+import volodymyrUrl from '../images/team/volodymyr.jpg';
+import yodaUrl from '../images/team/yoda.jpg';
 
-import spriteUrl from './images/sprite.svg';
+import spriteUrl from '../images/sprite.svg';
 
 // ---------------canvas-confetti--------------------
 // import showConfetti from './js/confetti';

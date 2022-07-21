@@ -1,5 +1,2 @@
 import { homePage } from '../src/js/home-page';
-
-import hi from './js/example';
-
-hi();
+import './js/team-modal.js';
