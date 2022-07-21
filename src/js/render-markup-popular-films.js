@@ -9,12 +9,12 @@ export function renderMarkupPopular(film) {
     <li class="film-card__item">
     <h2 class="film-card__title">${title}</h2>
     </li>
-    <div class="film-card__item--flex">
-    <li class="film-card__item">
-    <p class="film-card__text">CHANGE, CHANGE, CHANGE
+    <div class="film-card__flex">
+    <li class="film-card__flex__item">
+    <p class="film-card__flex__text">CHANGE, CHANGE, CHANGE 
     </p></li>
-    <li class="film-card__item">
-    <p class="film-card__text"></p>3000
+    <li class="film-card__flex__item">
+    <p class="film-card__flex__text"></p>3000
     </li></div>
   </ul>
 `;
