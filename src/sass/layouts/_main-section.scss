@@ -1,0 +1,71 @@
+
+.film-card__img {
+    width: 280px;
+    height: 402px;
+
+    margin-bottom: 10px;
+
+    @media screen and (min-width: $tablet) {
+            width: 336px;
+            height: 455px;
+            margin-bottom: 8px;
+        }
+                 @media screen and (min-width: $desktop) {
+                     width: 395px;
+                    height: 574px;
+                    margin-bottom: 12px;
+                 }
+}
+
+.film-card__title {
+    // font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: uppercase;
+    // color: $backdrop-color;
+
+    margin-bottom: 5px;
+}
+
+.film-card__text {
+    // font-family: 'Roboto';
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.33;
+    // color: $accent-bg-color;
+}
+
+.film-card__item--flex{
+    display: flex;
+    align-items: center;
+
+    
+}
+
+
+.film-card__list:not(:last-child) {
+    margin-bottom: 20px;
+
+    @media screen and (min-width: $tablet) {
+    }
+    
+        @media screen and (min-width: $desktop) {}
+}
+
+
+
+// @media screen and (min-width: $tablet) {}
+
+// @media screen and (min-width: $desktop) {}
+
+
+
+.js-container {
+    @media screen and (min-width: $tablet) {
+            
+        }
+    
+        @media screen and (min-width: $desktop) {}
+   
+}
