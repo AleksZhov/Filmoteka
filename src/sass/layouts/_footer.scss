@@ -1,0 +1,178 @@
+.footer {
+  background-color: #f7f7f7;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  box-shadow: -1px -8px 33px 6px rgba(0, 0, 0, 0.15);
+}
+
+.footer__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.19;
+  text-align: center;
+  color: #545454;
+}
+
+.footer__icon {
+  display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
+  fill: #ff6b08;
+}
+
+.developers {
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all var(--duration) var(--timing-function);
+  &:hover,
+  &:focus {
+    color: var(--brand-orange-color);
+  }
+}
+
+.footer__container {
+  text-align: center;
+}
+// ---------------------Modal---developers-----
+.basicLightbox {
+    overflow-y: scroll;
+    // @include min-width('medium') {
+    //   overflow: hidden;
+    // }
+    // overflow: hidden;
+}
+
+.basicLightbox__placeholder {
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    // margin: -20px;
+    text-align: center;
+    text-decoration: none;
+    width: 280px;
+    background-color: white;
+    border-radius: 15px;
+
+    @media screen and (min-width: 420px) and (max-width: 767px) {
+        // margin-top: 70px;
+        top: 5%;
+        width: 360px;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 500px;
+        top: 5%;
+    }
+
+    @media screen and (min-width: 1024px) {
+        // margin: -30px;
+
+        width: 620px;
+    }
+}
+
+.team-title {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    max-width: 600px;
+    margin: 5px auto;
+    border-bottom: 5px solid;
+    border-color: var(--brand-orange-color);
+    transition: transform var(--duration) var(--timing-function);
+
+    @media screen and (min-width: 768px) {
+        font-size: 40px;
+    }
+
+    &:hover,
+    &:focus {
+        transform: scale(1.1);
+    }
+}
+
+.clover {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 20px;
+    height: 20px;
+    background-image: url(/src/images/JAVA-YODA.jpg);
+
+    @media screen and (min-width: 768px) {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.team-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.team-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 10px;
+
+    width: calc((100% - 80px) / 2);
+
+    @media screen and (min-width: 768px) {
+        width: calc((100% - 120px) / 3);
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin: 20px;
+
+        width: calc((100% - 160px) / 3);
+    }
+}
+
+.team-image {
+    margin-bottom: 10px;
+
+    width: 100%;
+
+    border-radius: 50%;
+    box-shadow: 5px 5px 11px -2px black;
+}
+
+.team-name {
+    margin-bottom: 5px;
+    font-family: var(--main-font);
+    font-weight: 700;
+}
+
+.team-role {
+    font-family: var(--main-font);
+
+    @media screen and (max-width: (768px - 1)) {
+        font-size: 14px;
+    }
+
+    color: var(--brand-orange-color);
+}
+
+.team-git {
+    position: absolute;
+    cursor: pointer;
+    right: -10%;
+
+    transform: scale(1);
+    transition: transform var(--duration) var(--timing-function);
+
+    &:hover,
+    &:focus {
+        transform: scale(1.5);
+    }
+}
