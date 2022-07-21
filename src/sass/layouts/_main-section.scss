@@ -1,18 +1,13 @@
 .film-card__img {
     width: 280px;
     height: 402px;
-
-    // margin-bottom: 10px;
-
     @media screen and (min-width: $tablet) {
             width: 336px;
             height: 455px;
-            // margin-bottom: 8px;
         }
                  @media screen and (min-width: $desktop) {
                      width: 395px;
                     height: 574px;
-                    // margin-bottom: 12px;
                  }
 }
 
@@ -29,20 +24,36 @@
 
 
 .film-card__title {
-    // font-family: 'Roboto';
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.17;
+    @include font(500, 12px, 1.17, null);
+
+    max-width: 395px;;
+
+    @media screen and (min-width: $tablet) {
+            @include font(500, 12px, 1.33, null);
+        }
+                 @media screen and (min-width: $desktop) {
+                    @include font(500, 20px, 1.2, null);
+                 }
+    font-family: 'Roboto';
+    
     text-transform: uppercase;
-    // color: ;
+    color: $backdrop-color ;
 }
 
-.film-card__text {
-    // font-family: 'Roboto';
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 1.33;
-    // color:;
+.film-card__flex__text {
+    font-family: 'Roboto';
+
+    @include font(500, 12px, 1.33, null);
+
+    color: $accent-bg-color;
+
+    @media screen and (min-width: $desktop) {
+            @include font(500, 20px, 1.2, null);
+        }
+}
+
+.film-card__flex__text:first-child{
+    margin-right: 4px;
 }
 
 .film-card__flex{
@@ -58,9 +69,11 @@
 
 .main-section{
     padding-top: 20px;
+    padding-bottom: 40px;
 
     @media screen and (min-width: $tablet) {
             padding-top: 60px;
+            padding-bottom: 60px;
         }
 }
 
@@ -76,3 +89,4 @@
             gap: 32px 15px;
         }
 }
+
