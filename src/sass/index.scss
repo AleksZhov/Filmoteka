@@ -1,6 +1,8 @@
 @import './utils/variables';
 @import './utils/breakpoints';
 @import './utils/mixins';
+@import './utils/is-hidden';
+
 
 @import './base/reset';
 @import './components/container';
