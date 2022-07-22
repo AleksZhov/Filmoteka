@@ -18,6 +18,25 @@ const load = key => {
 const remove = key => {
   return localStorage.removeItem(key);
 };
+// ------------Для модалки фільма-----------------------------
+const filmDetailsKey = 'DetailsFilmsCurrentPage';
+const filmIDsKey = 'FilmIDs';
+const films = lsData.load(filmDetailsKey);
+const genres = lsData.load(filmIDsKey);
+const currentFilmId = Number(e.target.dataset.id);
+const clickedFilm = films.find(film => film.id === currentFilmId);
+
+//---------------для роботи модалки з локал сторедж------------------------
+lsData.btnTextChange(currentFilmId);
+const watchedBtn = document.querySelector('.modal-film__button-watched');
+const queueBtn = document.querySelector('.modal-film__button-queue');
+watchedBtn.addEventListener('click', e => {
+  lsData.addToWatched(e);
+});
+queueBtn.addEventListener('click', e => {
+  lsData.addToQueue(e);
+});
+// ----------------------------------------------------------------------------
 // Перевіряє чи є фільм в черзі чи в переглянутих коли відкрили модалку і міняє тексt кнопки
 function btnTextChange(currentFilmId) {
   //-----шукаємо кнопки--------------------------------------------------
