@@ -11,7 +11,7 @@
                  }
 }
 
-.film-card__item:first-child {
+.film-card__img{
     margin-bottom: 10px;
     
         @media screen and (min-width: $tablet) {
@@ -63,8 +63,10 @@
 }
 
 
-.film-card__list:not(:last-child) {
-    margin-bottom: 20px;
+.film-card__item:not(:last-child) {
+    @media screen and (max-width: $tablet) {
+           margin-bottom: 20px;
+        }
 }
 
 .main-section{
@@ -77,7 +79,7 @@
         }
 }
 
-.js-container {
+.container__list {
     display: flex;
     flex-wrap: wrap;
     
