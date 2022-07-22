@@ -1,26 +1,72 @@
+.main-section {
+    padding-top: 20px;
+    padding-bottom: 40px;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+
+.container__list {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (min-width: $tablet) {
+        gap: 32px 32px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        gap: 32px 15px;
+    }
+}
+
+
+
+
+.film-card__item {
+    cursor: pointer;
+    transition: all 250ms linear;
+        
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.film-card__item:hover,
+.film-card__item:hover {
+    transform: scale(1.03) translateZ(0);
+    // box-shadow: 0px -5px 10px 2px rgba(255, 107, 8, 1);
+}
+
+.film-card__item:not(:last-child) {
+    @media screen and (max-width: $tablet) {
+        margin-bottom: 20px;
+    }
+}
+
 .film-card__img {
+    transition: all 250ms linear;
     width: 280px;
     height: 402px;
+    margin-bottom: 10px;
+
+    border-radius: 10px;
     @media screen and (min-width: $tablet) {
             width: 336px;
             height: 455px;
+            margin-bottom: 8px;
         }
                  @media screen and (min-width: $desktop) {
                      width: 395px;
                     height: 574px;
+                    margin-bottom: 12px;
                  }
 }
 
-.film-card__img{
-    margin-bottom: 10px;
-    
-        @media screen and (min-width: $tablet) {
-            margin-bottom: 8px;
-        }
-        @media screen and (min-width: $desktop) {
-            margin-bottom: 12px;
-        }
-}
+.film-card__img:hover,.film-card__img:focus{box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 2px 1px rgba(0, 0, 0, 0.2);}
+
 
 
 .film-card__title {
@@ -40,6 +86,12 @@
     color: $backdrop-color ;
 }
 
+.film-card__flex {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
 .film-card__flex__text {
     font-family: 'Roboto';
 
@@ -56,39 +108,11 @@
     margin-right: 4px;
 }
 
-.film-card__flex{
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-}
 
 
-.film-card__item:not(:last-child) {
-    @media screen and (max-width: $tablet) {
-           margin-bottom: 20px;
-        }
-}
 
-.main-section{
-    padding-top: 20px;
-    padding-bottom: 40px;
 
-    @media screen and (min-width: $tablet) {
-            padding-top: 60px;
-            padding-bottom: 60px;
-        }
-}
 
-.container__list {
-    display: flex;
-    flex-wrap: wrap;
-    
-    @media screen and (min-width: $tablet) {
-            gap: 32px 32px;
-        }
-    
-        @media screen and (min-width: $desktop) {
-            gap: 32px 15px;
-        }
-}
+
+
 
