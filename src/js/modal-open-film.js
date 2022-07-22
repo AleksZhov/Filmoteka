@@ -14,7 +14,6 @@ function onFilmCardClickHandle(evt) {
   movieAPI.getFilms(id).then(result => {
     const markup = renderModalMarkup(result);
     getRefs().modalFilm.innerHTML = markup;
-    console.log(markup);
   });
 }
 
