@@ -1,4 +1,4 @@
-import getRefs from './getRefs';
+import getRefs from './getRefs.js';
 import { MovieAPI } from './movieAPI';
 import { renderModalMarkup } from './renderModalMarkup';
 const movieAPI = new MovieAPI();
