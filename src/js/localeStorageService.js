@@ -1,7 +1,4 @@
-// import localeStorageServices from './localeStorageServices';
-import Notiflix from 'notiflix';
-// import pag from './pagination';
-// import { galleryReset } from './galleryFetch';
+// import Notiflix from 'notiflix';
 
 //---функція яка записує в локалсторедж------------------------//
 const save = (key, value) => {
@@ -104,61 +101,73 @@ export default {
   btnTextChange,
 };
 // -------------сторінка---Library------------------
-const galleryEl = document.querySelector('.film-card__list');
-const errorImgEl = document.querySelector('.errorImg__container');
-const emptyLibEl = document.querySelector('.errorImg__container--Library');
-const paginationContainer = document.querySelector('.tui-pagination');
+// const galleryEl = document.querySelector('.film-card__list');
+// const errorImgEl = document.querySelector('.errorImg__container');
+// const emptyLibEl = document.querySelector('.errorImg__container--Library');
+// const paginationContainer = document.querySelector('.tui-pagination');
 
-const watchedBtn = document.querySelector('.js-btn-watched');
-const queueBtn = document.querySelector('.js-btn-queue');
-watchedBtn.addEventListener('click', onWatchedClick);
-queueBtn.addEventListener('click', onQueueClick);
+// const watchedBtn = document.querySelector('.js-btn-watched');
+// const queueBtn = document.querySelector('.js-btn-queue');
+// watchedBtn.addEventListener('click', onWatchedClick);
+// queueBtn.addEventListener('click', onQueueClick);
 
-function onWatchedClick(e) {
-  galleryReset();
-  if (localStorage.getItem('watchedKey') === null) {
-    onEmptyLibraryError();
-    return;
-  }
+// function onWatchedClick(e) {
+//   galleryReset();
+//   if (localStorage.getItem('watchedKey') === null) {
+//     onEmptyLibraryError();
+//     return;
+//   }
 
-  const lengthArrWatchedLS = JSON.parse(
-    localStorage.getItem('watchedKey')
-  ).length;
-  if (lengthArrWatchedLS === 0) onEmptyLibraryError();
-  Notiflix.Loading.init({ svgColor: '#ff6b08' });
-  Notiflix.Loading.dots('Loading...');
-  const watchedFilms = localeStorageServices.load('watchedKey');
-  pag.l(watchedFilms);
-  localeStorageServices.save('DetailsFilmsCurrentPage', watchedFilms);
-  Notiflix.Loading.remove(350);
-}
+//   const lengthArrWatchedLS = JSON.parse(
+//     localStorage.getItem('watchedKey')
+//   ).length;
+//   if (lengthArrWatchedLS === 0) onEmptyLibraryError();
+//   Notiflix.Loading.init({ svgColor: '#ff6b08' });
+//   Notiflix.Loading.dots('Loading...');
+//   const watchedFilms = localeStorageServices.load('watchedKey');
+//   pag.l(watchedFilms);
+//   localeStorageServices.save('DetailsFilmsCurrentPage', watchedFilms);
+//   Notiflix.Loading.remove(350);
+// }
 
-function onQueueClick(e) {
-  galleryReset();
-  if (localStorage.getItem('queueKey') === null) {
-    onEmptyLibraryError();
-    return;
-  }
-  const lengthArrQueueLS = JSON.parse(localStorage.getItem('queueKey')).length;
-  if (lengthArrQueueLS === 0) onEmptyLibraryError();
-  Notiflix.Loading.init({ svgColor: '#ff6b08' });
-  Notiflix.Loading.dots('Loading...');
-  const queueFilms = localeStorageServices.load('queueKey');
-  pag.libraryPagination(queueFilms);
-  let voteEl = document.querySelectorAll('.vote');
-  console.log(voteEl);
-  for (let i = 0; i < voteEl.length; i += 1) {
-    voteEl[i].classList.remove('errorImg-hidden');
-  }
-  localeStorageServices.save('DetailsFilmsCurrentPage', queueFilms);
-  Notiflix.Loading.remove(350);
-}
+// function onQueueClick(e) {
+//   galleryReset();
+//   if (localStorage.getItem('queueKey') === null) {
+//     onEmptyLibraryError();
+//     return;
+//   }
+//   const lengthArrQueueLS = JSON.parse(localStorage.getItem('queueKey')).length;
+//   if (lengthArrQueueLS === 0) onEmptyLibraryError();
+//   Notiflix.Loading.init({ svgColor: '#ff6b08' });
+//   Notiflix.Loading.dots('Loading...');
+//   const queueFilms = localeStorageServices.load('queueKey');
+//   pag.libraryPagination(queueFilms);
+//   let voteEl = document.querySelectorAll('.vote');
+//   console.log(voteEl);
+//   for (let i = 0; i < voteEl.length; i += 1) {
+//     voteEl[i].classList.remove('errorImg-hidden');
+//   }
+//   localeStorageServices.save('DetailsFilmsCurrentPage', queueFilms);
+//   Notiflix.Loading.remove(350);
+// }
 
-function onEmptyLibraryError() {
-  Notiflix.Loading.remove(350);
-  emptyLibEl.classList.remove('errorImg-hidden');
-  galleryEl.classList.add('errorImg-hidden');
-  paginationContainer.classList.add('errorImg-hidden');
-}
+// function onEmptyLibraryError() {
+//   Notiflix.Loading.remove(350);
+//   emptyLibEl.classList.remove('errorImg-hidden');
+//   galleryEl.classList.add('errorImg-hidden');
+//   paginationContainer.classList.add('errorImg-hidden');
+// }
 
-export { onWatchedClick, onQueueClick };
+// // перезавантаження галереї
+// function galleryReset() {
+//   galleryEl.innerHTML = '';
+//   errorEl.innerHTML = '';
+//   paginationContainer.innerHTML = '';
+//   errorEl.classList.add('search-error--hidden');
+//   errorImgEl.classList.add('visually-hidden');
+//   galleryEl.classList.remove('visually-hidden');
+//   paginationContainer.classList.remove('visually-hidden');
+//   emptyLibEl.classList.add('visually-hidden');
+// }
+
+// export { onWatchedClick, onQueueClick };
