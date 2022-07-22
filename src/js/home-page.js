@@ -1,12 +1,25 @@
-import { filmApi } from '../js/film-api';
+import { filmApi, filmotekaAPI } from '../js/film-api';
 import { renderMarkupPopular } from './render-markup';
 import { pagination } from './pagination-library';
 
-const div = document.querySelector('.js-container');
-// const container = document.getElementById('pagination');
-// const pagination = new Pagination(container);
+import { genres } from './genres.js';
 
-filmApi().then(data => (div.innerHTML = renderMarkupPopular(data.results)));
+const div = document.querySelector('.container__list');
 
-filmApi().then(data => console.log('DATA RESULT', data.results));
-// filmApi().then(data => console.log('DATA GENRE', data.genres[0].name));
+// const jsonApi = new filmotekaAPI();
+
+// jsonApi
+//   .getFilmotekaCard()
+//   .then(data => (div.innerHTML = renderMarkupPopular(data.results)));
+
+filmApi().then(data => {
+  div.innerHTML = console.log('ФИЛЬМЫ', data.results);
+});
+
+filmApi().then(data => {
+  div.innerHTML = renderMarkupPopular(data.results);
+});
+
+genres.map(el => {
+  console.log(el.name);
+});
