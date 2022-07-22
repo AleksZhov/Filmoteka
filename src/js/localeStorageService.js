@@ -1,11 +1,12 @@
 // import Notiflix from 'notiflix';
 
-//---функція яка записує в локалсторедж------------------------//
+// /---функція яка записує в локалсторедж------------------------//
 const save = (key, value) => {
   const data = JSON.stringify(value);
   localStorage.setItem(key, data);
 };
 //---функція яка грузить з локалстореджу-----------------------//
+
 const load = key => {
   try {
     const data = localStorage.getItem(key);
@@ -15,33 +16,37 @@ const load = key => {
   }
 };
 //---функція яка видаляє з локалстореджу-----------------------//
+
 const remove = key => {
   return localStorage.removeItem(key);
 };
 // ------------Для модалки фільма-----------------------------
-const filmDetailsKey = 'DetailsFilmsCurrentPage';
-const filmIDsKey = 'FilmIDs';
-const films = lsData.load(filmDetailsKey);
-const genres = lsData.load(filmIDsKey);
-const currentFilmId = Number(e.target.dataset.id);
-const clickedFilm = films.find(film => film.id === currentFilmId);
+// const filmDetailsKey = 'DetailsFilmsCurrentPage';
+// const filmIDsKey = 'FilmIDs';
+// const films = lsData.load(filmDetailsKey);
+// const genres = lsData.load(filmIDsKey);
+// const currentFilmId = Number(e.target.dataset.id);
+// const clickedFilm = films.find(film => film.id === currentFilmId);
 
 //---------------для роботи модалки з локал сторедж------------------------
-lsData.btnTextChange(currentFilmId);
-const watchedBtn = document.querySelector('.modal-film__button-watched');
-const queueBtn = document.querySelector('.modal-film__button-queue');
-watchedBtn.addEventListener('click', e => {
-  lsData.addToWatched(e);
-});
-queueBtn.addEventListener('click', e => {
-  lsData.addToQueue(e);
-});
+// lsData.btnTextChange(currentFilmId);
+// const watchedBtn = document.querySelector('.modal-film__button-watched');
+// console.log(watchedBtn);
+// const queueBtn = document.querySelector('.modal-film__button-queue');
+// watchedBtn.addEventListener('click', e => {
+//   lsData.addToWatched(e);
+// });
+// queueBtn.addEventListener('click', e => {
+//   lsData.addToQueue(e);
+// });
 // ----------------------------------------------------------------------------
 // Перевіряє чи є фільм в черзі чи в переглянутих коли відкрили модалку і міняє тексt кнопки
 function btnTextChange(currentFilmId) {
   //-----шукаємо кнопки--------------------------------------------------
   const watchedBtn = document.querySelector('.js-btn-watched');
+  console.log(watchedBtn);
   const queueBtn = document.querySelector('.js-btn-queue');
+  console.log(queueBtn);
   //---Перевіряємо чи є цей фільм в ЛС в масиві Watched------------------
   if (!load('watchedKey')) {
     return;
@@ -64,6 +69,7 @@ function btnTextChange(currentFilmId) {
 }
 //-------------Для роботи з localStorage------------------
 let watchedKey = [];
+console.log(watchedKey);
 let queueKey = [];
 
 // Функция адд в переглянуті
@@ -110,6 +116,7 @@ function addToQueue(e) {
     btNwatch.textContent = 'Remove from queue';
   }
 }
+
 //--------------EXPORT------------------------------------
 export default {
   save,
