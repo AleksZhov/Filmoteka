@@ -54,6 +54,9 @@
 .header_item--margin {
   margin-right: 40px;
 }
+.current {
+  border-bottom: 3px solid red;
+}
 .header_item {
   color: #ffffff;
   cursor: pointer;
@@ -63,11 +66,7 @@
 }
 .header_item:hover,
 .header_btn:focus {
-  border-bottom: 3px solid red;
-}
-.header_item--logo:hover,
-.header_btn:focus {
-  border-bottom: none;
+  color: #ff6b01;
 }
 .icon-films {
   fill: #ffffff;
@@ -119,6 +118,19 @@
     display: flex;
     align-items: center;
   }
+}
+.is-hidden-text {
+  visibility: hidden;
+}
+.header_warning {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: red;
+  font-size: 14px;
+  line-height: 16px;
 }
 @media screen and (min-width: 1280px) {
   .header_icon {
