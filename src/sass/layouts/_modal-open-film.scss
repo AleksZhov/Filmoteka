@@ -1,0 +1,135 @@
+.modal {
+    // display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+}
+.modal__conteiner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.modal__body {
+    margin: auto;
+    width: 806px;
+    height: 558px;
+    background-color: white;
+    text-align: left;
+    padding: 40px 12px;
+    position: relative;
+}
+.modal__close {
+    position: absolute;
+    top: 8;
+    right: 8;
+    border: none;
+    background: transparent;
+}
+.modal__icon {
+    width: 30px;
+    height: 30px;
+}
+.modal__poster {
+    display: block;
+    background-color:grey ;
+    width: 375px;
+    height: 478px;
+    margin: 5px;
+}
+.modal__film {
+    display: flex;
+}
+.film__name {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+}
+.film__text {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    width: 391px;
+    height: 184px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+}
+.film__about {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: #000000;
+}
+.film {
+    margin-left: 16px;
+}
+
+.film__details {
+    display: flex;
+    margin: 20px 0;
+}
+.film__details--static {
+    margin-right: 83px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--logo-color);
+}
+.film__details--static > h3 {
+    &:nth-child(n + 2) {
+        margin-top: 8px;
+        }
+}
+.film__details--dinamic{
+    margin-right: 83px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+}
+.film__details--dinamic > h3 {
+    &:nth-child(n + 2) {
+        margin-top: 8px;
+    }
+}
+.modal__btn {
+    margin-left: 8px;
+    width: 136px;
+    height: 44px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background: transparent;
+        &:nth-child(n + 2) {
+                margin-left: 15px;
+            }
+}
+.modal__btn:hover,
+.modal__btn:focus {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background-color: #ff6b01;
+    border: none;
+}
+
+.modal__add-queue {
+    margin-left: 15px;
+    width: 136px;
+    height: 44px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background: var(--brand-orange-color);
+}
