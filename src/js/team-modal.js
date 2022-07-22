@@ -95,7 +95,6 @@ ${markupTeamCard}
 </ul>
 </div>`;
 const container = document.querySelector('.developers');
-console.log(container);
 container.addEventListener('click', openModal);
 
 const modal = basicLightbox.create(markupModal);
