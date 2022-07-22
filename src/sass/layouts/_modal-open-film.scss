@@ -1,5 +1,5 @@
 .modal {
-    display: none;
+    // display: none;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -26,6 +26,8 @@
     position: absolute;
     top: 8;
     right: 8;
+    border: none;
+    background: transparent;
 }
 .modal__icon {
     width: 30px;

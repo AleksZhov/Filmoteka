@@ -2,11 +2,11 @@
     <div class="modal__conteiner" data-backdrop>
         <!-- <div class="container"> -->
         <div class="modal__body">
-            <div class="modal__close" data-close-modal>
+            <button type="button" class="modal__close" data-close-modal>
                 <svg class="modal__icon">
                     <use href="./images/sprite.svg#icon-close"></use>
                 </svg>
-            </div>
+            </button>
             <div class="modal__film">
                 <div class="modal__poster"></div>
                 <div class="film">
@@ -32,8 +32,8 @@
                         libero, perspiciatis accusantium et unde consequuntur necessitatibus.</p>
 
                     <div class="film__nav">
-                        <button class="modal__btn" type="submit">add to watched</button>
-                        <button class="modal__btn" type="submit">add to queue</button>
+                        <button class="modal__btn js-btn-watched" type="button">add to watched</button>
+                        <button class="modal__btn js-btn-queue" type="button">add to queue</button>
                     </div>
                 </div>
             </div>
