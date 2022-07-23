@@ -1,10 +1,12 @@
 import getRefs from './getRefs.js';
 import { MovieAPI } from './movieAPI';
 import { renderModalMarkup } from './renderModalMarkup';
+import Notiflix, { Notify } from 'notiflix';
+// import lsData from './localeStorageService';
 const movieAPI = new MovieAPI();
-
 getRefs().containerListRef.addEventListener('click', onFilmCardClickHandle);
 function onFilmCardClickHandle(evt) {
+  let id = evt.target.closest('.film-card__item').dataset.id;
   if (evt.target === evt.currentTarget) {
     return;
   }
@@ -14,13 +16,15 @@ function onFilmCardClickHandle(evt) {
     'click',
     onModalContainerClickHandle
   );
-  let id = evt.target.closest('.film-card__item').dataset.id;
-
   movieAPI
     .getFilms(id)
     .then(result => {
       const markup = renderModalMarkup(result);
       getRefs().modalFilm.innerHTML = markup;
+    })
+    // Adding functioning for buttons
+    .then(() => {
+      onAddButtonsFunctinal();
     })
     .catch(error => console.log(error));
 }
@@ -47,3 +51,70 @@ function onEscapeCloseHandle(evt) {
     onModalCloseBtnHandle();
   }
 }
+// -----------------------------------------------------------
+function onAddButtonsFunctinal() {
+  const addToWatchedBtnRef = document.querySelector('.js-btn-watched');
+  addToWatchedBtnRef.addEventListener('click', onAddToWatchedHandle);
+  // --------------цей код додано мною
+  const addToQueueBtnRef = document.querySelector('.js-btn-queue');
+  addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
+}
+// -----------------------------------------------------------------
+let watchedMoviesArr = [];
+const LOCAL_STORAGE_WATCHED = 'WATCHED';
+let queueMoviesArr = [];
+const LOCAL_STORAGE_QUEUE = 'QUEUE';
+
+const onAddToWatchedHandle = evt => {
+  let id = evt.target.dataset.id;
+  const addToWatchedBtnRef = document.querySelector('.js-btn-watched');
+  if (localStorage.getItem(LOCAL_STORAGE_WATCHED) !== null) {
+    watchedMoviesArr = [
+      ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_WATCHED)),
+    ];
+  }
+  // check for unique value(id)
+  if (!watchedMoviesArr.includes(id)) {
+    watchedMoviesArr.push(id);
+    Notify.success('Film add to watched');
+    addToWatchedBtnRef.textContent = 'Remove from watched';
+  } else {
+    watchedMoviesArr = watchedMoviesArr.filter(film => Number(film) !== id);
+    Notify.warning('Film Remove from watched');
+    let index = watchedMoviesArr.indexOf(id);
+    watchedMoviesArr.splice(index, 1);
+    addToWatchedBtnRef.textContent = 'Add to watched';
+  }
+
+  try {
+    const serializedState = JSON.stringify(watchedMoviesArr);
+    localStorage.setItem(LOCAL_STORAGE_WATCHED, serializedState);
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+};
+// --------------onAddToQueueHandle
+const onAddToQueueHandle = evt => {
+  let id = evt.target.dataset.id;
+  if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
+    queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
+  }
+  // check for unique value(id)
+  if (!queueMoviesArr.includes(id)) {
+    queueMoviesArr.push(id);
+    Notify.success('Фільм додано');
+    evt.target.textContent = 'Remove from queue';
+  } else {
+    queueMoviesArr = queueMoviesArr.filter(film => Number(film) !== id);
+    Notify.warning('Film Remove from queue');
+    let index = queueMoviesArr.indexOf(id);
+    queueMoviesArr.splice(index, 1);
+    evt.target.textContent = 'Add to queue';
+  }
+  try {
+    const serializedState = JSON.stringify(queueMoviesArr);
+    localStorage.setItem(LOCAL_STORAGE_QUEUE, serializedState);
+  } catch (error) {
+    console.error('Set state error: ', error.message);
+  }
+};
