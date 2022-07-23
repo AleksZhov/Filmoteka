@@ -4,8 +4,9 @@ export function renderMarkupPopular(film) {
     .map(({ id, genre_ids, title, release_date, poster_path }) => {
       let genresCreate = Object.values(genre_ids).map(id => genres[id]);
       if (genresCreate.length > 2) {
-        genresCreate.slice(0, 2).join(' , ');
-        genresCreate = genresCreate.slice(0, 2).join(' , ') + `, Other`;
+        genresCreate = genresCreate.slice(0, 2).join(', ') + `, Other`;
+      } else {
+        genresCreate = genresCreate.join(', ');
       }
       return `
     <li class="film-card__item" data-id=${id}>
