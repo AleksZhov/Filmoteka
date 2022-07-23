@@ -10,7 +10,6 @@ jsonApi
   .getFilmotekaCard()
   .then(film => (getRefs().div.innerHTML = renderMarkupPopular(film.results)));
 
-
 jsonApi.getFilmotekaCard().then(film => {});
 
 pagination.on('afterMove', function (eventData) {
@@ -22,6 +21,4 @@ pagination.on('afterMove', function (eventData) {
     );
 });
 
-
 getRefs().body.classList.add('overflow');
-
