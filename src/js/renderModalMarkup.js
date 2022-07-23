@@ -45,10 +45,10 @@ export function renderModalMarkup({
           </p>
 
           <div class="film__nav">
-            <button class="modal__btn js-btn-watched" type="button">
+            <button class="modal__btn js-btn-watched" data-id=${id} type="button">
               add to watched
             </button>
-            <button class="modal__btn js-btn-queue" type="button">
+            <button class="modal__btn js-btn-queue" data-id=${id} type="button">
               add to queue
             </button>
           </div>
