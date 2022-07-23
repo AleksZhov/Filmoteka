@@ -1,4 +1,4 @@
-export default getRefs = () => {
+const getRefs = () => {
   return {
     modal: document.querySelector('.modal'),
     containerListRef: document.querySelector('.container__list'),
@@ -6,3 +6,4 @@ export default getRefs = () => {
     modalFilm: document.querySelector('.modal__film'),
   };
 };
+export default getRefs;
