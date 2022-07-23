@@ -60,3 +60,4 @@ pagination.on('beforeMove', function (eventData) {
       });
   }
 });
+console.log('hi');
