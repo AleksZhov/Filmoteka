@@ -12,7 +12,9 @@ export class filmotekaAPI {
 
   async getFilmotekaCard() {
     const { data } = await axios.get(
-      `${this.#BASE_URL}trending/movie/day?api_key=${this.#API_KEY}`
+      `${this.#BASE_URL}trending/movie/day?api_key=${this.#API_KEY}&page=${
+        this.page
+      }`
     );
     // console.log('ВНУТРИ FILM-API', data);
     return data;
