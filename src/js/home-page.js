@@ -4,8 +4,6 @@ import { pagination } from './pagination-library';
 import { genres } from './genres.js';
 import getRefs from './getRefs.js';
 
-// const div = document.querySelector('.container__list');
-
 const jsonApi = new filmotekaAPI();
 
 let genresValues = null;
