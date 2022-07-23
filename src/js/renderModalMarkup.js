@@ -1,18 +1,23 @@
-export function renderModalMarkup(film) {
-  const {
-    id,
-    popularity,
-    genre_ids,
-    title,
-    vote_average,
-    vote_count,
-    overview,
-    poster_path,
-    original_title,
-  } = film;
+import { genres } from './genres.js';
+export function renderModalMarkup({
+  id,
+  popularity,
+  genres,
+  title,
+  vote_average,
+  vote_count,
+  overview,
+  poster_path,
+  original_title,
+}) {
+  let genresCreate = genres
+    .map(({ name }) => {
+      return name;
+    })
+    .join(', ');
+
   return `
 
-      
         <div class="modal__poster">
         <img class="modal__img" src="https://image.tmdb.org/t/p/w500/${poster_path}" /></div>
         <div class="film">
@@ -31,7 +36,7 @@ export function renderModalMarkup(film) {
               </h3>
               <h3 class="film__popularity">${popularity}</h3>
               <h3 class="film__original-title">${original_title}</h3>
-              <h3 class="film__genre">${genre_ids}</h3>
+              <h3 class="film__genre">${genresCreate}</h3>
             </div>
           </div>
           <h4 class="film__about">About</h4>
