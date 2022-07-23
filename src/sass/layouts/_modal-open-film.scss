@@ -20,23 +20,20 @@
     display: flex;
     width: 100%;
     height: 100%;
+    @media screen and (min-width: $mobile) {
+        }
 }
 
-.modal__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5px;
-
-}
 .modal__body {
-    margin: auto;
-    width: 280px;
-    height: 920px;
-    background-color: white;
-    text-align: left;
-    padding: 48px 20px;
     position: relative;
+    margin: auto;
+    padding: 48px 20px;
+    width: 280px;
+    height: 500px;
+    overflow-y: scroll;
+    border-radius: 5px;
+    text-align: left;
+    background-color: $white-color;
     @media screen and (min-width: $tablet) {
         width: 704px;
         height: 552px;
@@ -59,12 +56,20 @@
     width: 30px;
     height: 30px;
 }
+.modal__img {
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    @media screen and (min-width: $desktop) {
+        max-width: 374px;
+        height: 478px;
+    }
+}
 .modal__poster {
     display: block;
-    background-color:$grey-color ;
-    // width: 375px;
-    // height: 478px;
-    margin: 5px;
+    width: 240px;
+    height: 357px;
     border-radius: 5px;
     @media screen and (min-width: $tablet) {
     width: 264px;
@@ -98,6 +103,7 @@
     margin-top: 20px;
     }
     @media screen and (min-width: $tablet) {
+        margin-top: 0;
     font-weight: 500;
     font-size: 20px;
     line-height: 1.15;
@@ -132,7 +138,12 @@
     color: $backdrop-color;
 }
 .film {
-    margin-left: 16px;
+    @media screen and (min-width: $tablet) {
+        margin-left: 16px;
+    }
+    @media screen and (min-width: $desktop) {
+        margin-left: 16px;
+    }
 }
 .vote {
     width: 36px;
@@ -192,7 +203,6 @@
 
 }
 .modal__btn {
-    margin-left: 8px;
     width: 110px;
     height: 44px;
     font-weight: 500;
@@ -213,9 +223,13 @@
         &:nth-child(n + 2) {
                 margin-left: 15px;
             }
+    &:focus {
+    border: none;
+    box-shadow: 0 0 0 4px scale-color($orange-color);
+}
 }
 .modal__btn:hover,
-.modal__btn:focus {
+.modal__btn:active {
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
@@ -223,6 +237,6 @@
     text-align: center;
     text-transform: uppercase;
     color: $white-color;
-    background-color: $orange-color;
+    background-color: scale-color($orange-color);
     border: none;
 }
