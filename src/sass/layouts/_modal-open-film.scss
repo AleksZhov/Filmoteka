@@ -6,21 +6,47 @@
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 2;
+    z-index: 2;   
+    -webkit-transition: opacity 500ms ease-in;
+    -moz-transition: opacity 500ms ease-in;
+    transition: opacity 500ms ease-in;
+}
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+    
 }
 .modal__conteiner {
     display: flex;
     width: 100%;
     height: 100%;
 }
+
+.modal__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
 .modal__body {
     margin: auto;
-    width: 806px;
-    height: 558px;
+    width: 280px;
+    height: 920px;
     background-color: white;
     text-align: left;
-    padding: 40px 12px;
+    padding: 48px 20px;
     position: relative;
+    @media screen and (min-width: $tablet) {
+        width: 704px;
+        height: 552px;
+        padding: 40px 36px;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 806px;
+        height: 558px;
+        padding: 40px 12px;
+    }
 }
 .modal__close {
     position: absolute;
@@ -35,69 +61,139 @@
 }
 .modal__poster {
     display: block;
-    background-color:grey ;
+    background-color:$grey-color ;
+    // width: 375px;
+    // height: 478px;
+    margin: 5px;
+    border-radius: 5px;
+    @media screen and (min-width: $tablet) {
+    width: 264px;
+    height: 373.55px;
+    }
+    @media screen and (min-width: $desktop) {
     width: 375px;
     height: 478px;
-    margin: 5px;
+    }
 }
 .modal__film {
+    @media screen and (min-width: $mobile) {
     display: flex;
+    flex-direction: column;
+    }
+    @media screen and (min-width: $tablet) {
+    display: flex;
+    flex-direction: row;
+    }
+    @media screen and (min-width: $desktop) {
+    display: flex;
+    flex-direction: row;
+    }
 }
 .film__name {
     font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    text-transform: uppercase;
+    @media screen and (min-width: $mobile) {
+    margin-top: 20px;
+    }
+    @media screen and (min-width: $tablet) {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    }
+    @media screen and (min-width: $desktop) {
+    font-weight: 500;
     font-size: 30px;
-    line-height: 35px;
+    line-height: 1.16;
+    }
 }
+
 .film__text {
     margin-top: 8px;
     margin-bottom: 20px;
-    width: 391px;
-    height: 184px;
+    width: 240px;
+    // height: 184px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.67;
+    @media screen and (min-width: $tablet) {
+        width: 264px;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 391px;
+    }
 }
 .film__about {
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
     text-transform: uppercase;
-    color: #000000;
+    color: $backdrop-color;
 }
 .film {
     margin-left: 16px;
 }
-
+.vote {
+    width: 36px;
+    padding: 1px 10px;
+    border-radius: 5px;
+    color: $white-color;
+    background-color: $orange-color;
+}
+.votes {
+    margin-left: 7px;
+}
 .film__details {
     display: flex;
     margin: 20px 0;
 }
 .film__details--static {
-    margin-right: 83px;
+    margin-right: 80px;
+    color: $grey-color;
+    @media screen and (min-width: $mobile) {
+    margin-right: 39px;
+    }
+    @media screen and (min-width: $tablet) {
+    margin-right: 32px;
+    }
+    @media screen and (min-width: $desktop) {
+    margin-right: 80px;
+    }
+}
+.film__details--static > h3 {
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    color: var(--logo-color);
-}
-.film__details--static > h3 {
     &:nth-child(n + 2) {
         margin-top: 8px;
         }
 }
-.film__details--dinamic{
-    margin-right: 83px;
+
+// .film__details--dinamic {
+    // margin-right: 83px;
+// }
+.film__details--dinamic > h3 {
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-}
-.film__details--dinamic > h3 {
+    text-transform: uppercase;
+    &:last-child {
+    text-transform: capitalize;
+    }
     &:nth-child(n + 2) {
         margin-top: 8px;
     }
 }
+.film__nav {
+    @media screen and (min-width: $mobile) {
+    display: flex;
+    }
+
+}
 .modal__btn {
     margin-left: 8px;
-    width: 136px;
+    width: 110px;
     height: 44px;
     font-weight: 500;
     font-size: 12px;
@@ -105,9 +201,15 @@
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    border: 1px solid #000000;
+    border: 1px solid $backdrop-color;
     border-radius: 5px;
     background: transparent;
+    @media screen and (min-width: $tablet) {
+        width: 125.03px;
+    }
+    @media screen and (min-width: $desktop) {
+        width: 136px;
+    }
         &:nth-child(n + 2) {
                 margin-left: 15px;
             }
@@ -120,16 +222,7 @@
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    color: #FFFFFF;
-    background-color: #ff6b01;
+    color: $white-color;
+    background-color: $orange-color;
     border: none;
-}
-
-.modal__add-queue {
-    margin-left: 15px;
-    width: 136px;
-    height: 44px;
-    border-radius: 5px;
-    border: 1px solid #000000;
-    background: var(--brand-orange-color);
 }
