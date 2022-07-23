@@ -16,21 +16,8 @@ export class filmotekaAPI {
         this.page
       }`
     );
-    // console.log('ВНУТРИ FILM-API', data);
     return data;
   }
-
-  // get page() {
-  //   return this.page;
-  // }
-
-  // incrementPage() {
-  //   this.page += 1;
-  // }
-
-  // resetPage() {
-  //   this.page = 1;
-  // }
 
   getTotalPages(totalHits) {
     this.totalPage = totalHits / this.perPage;

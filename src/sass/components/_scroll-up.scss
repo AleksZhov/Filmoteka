@@ -1,0 +1,46 @@
+.back_to_top {
+right: -10px;
+        @media screen and (min-width: $tablet) {
+            right: 5px;
+        }
+                        @media screen and (min-width: $desktop) {
+                            right: 10px;
+                        }
+    position: fixed;
+    bottom: 80px;
+    
+    z-index: 9999;
+        width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 250ms linear;
+}
+
+.back_to_top:hover {
+    
+    transform: opacity;
+}
+
+.back_to_top-show {
+    opacity: 1;
+}
+
+.icon-arrow-up{
+    transition: all 250ms linear;
+    fill: rgba($color: #FF6B01, $alpha: 0.7);
+    width: 30px;
+    height: 30px;
+    @media screen and(min-width: $tablet){
+        width: 40px;
+            height: 40px;
+    }
+}
+
+.icon-arrow-up:hover, .icon-arrow-up:focus{
+    transform: fill;
+    fill: #ff6b08;
+}

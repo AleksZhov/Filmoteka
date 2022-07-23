@@ -4,4 +4,4 @@ import './js/modal-open-film.js';
 import './js/main-input.js';
 import './js/preloader.js';
 import './js/pagination-library.js';
-
+import './js/scroll-up.js';
