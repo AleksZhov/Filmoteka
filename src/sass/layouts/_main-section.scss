@@ -113,7 +113,21 @@
 .film-card__flex__text:first-child{
     margin-right: 4px;
 }
-
+.film-card__flex__rating {
+    margin-left: 8px;
+    padding: 1px 10px;
+    height: 16px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    border-radius: 5px;
+    color: $white-color;
+    background-color: $orange-color;
+    @media screen and (min-width: $desktop) {
+    padding: 3px 12px;
+    height: 20px;
+    }
+}
 
 
 
