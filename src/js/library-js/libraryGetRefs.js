@@ -7,6 +7,7 @@ const libraryGetRefs = () => {
     modalContainer: document.querySelector('.modal__conteiner'),
     watchedBthRef: document.querySelector('.js-btn-watched-render'),
     queueBtnRef: document.querySelector('.js-btn-queue-render'),
+    emptyListContainer: document.querySelector('.js-empty-list-container'),
   };
 };
 export default libraryGetRefs;
