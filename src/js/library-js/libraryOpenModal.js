@@ -6,6 +6,7 @@ import Notiflix, { Notify } from 'notiflix';
 import getRefs from '../getRefs';
 const modal = document.querySelector('.modal');
 
+
 const movieAPI = new MovieAPI();
 
 libraryGetRefs().containerListRef.addEventListener(
