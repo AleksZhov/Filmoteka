@@ -5,11 +5,27 @@ import Notiflix, { Notify } from 'notiflix';
 import getRefs from '../getRefs';
 
 const movieAPI = new MovieAPI();
+let currentResult = {};
 let watchedMoviesArr = [];
 const LOCAL_STORAGE_WATCHED = 'WATCHED';
 let queueMoviesArr = [];
 const LOCAL_STORAGE_QUEUE = 'QUEUE';
 
+// ------Перевірка масивів та додавання картинки якщо пусто----
+
+// const errorImg = document.querySelector('.js-empty-list-container');
+
+// if (watchedMoviesArr.length === 0) {
+//   errorImg.classList.remove('is-hidden', 'errorImg-hidden');
+// } else {
+//   errorImg.classList.add('is-hidden', 'errorImg-hidden');
+// }
+// if (watchedMoviesArr.length === 0) {
+//   errorImg.classList.remove('is-hidden', 'errorImg-hidden');
+// } else {
+//   errorImg.classList.add('is-hidden', 'errorImg-hidden');
+// }
+// ------------------------------------------------------
 libraryGetRefs().containerListRef.addEventListener(
   'click',
   onFilmCardClickHandle
@@ -29,7 +45,7 @@ function onFilmCardClickHandle(evt) {
   movieAPI
     .getFilms(id)
     .then(result => {
-      console.log(result);
+      // console.log(result);
       const markup = renderModalMarkup(result);
 
       libraryGetRefs().modalFilm.innerHTML = markup;
@@ -56,6 +72,9 @@ function onModalCloseBtnHandle() {
     'click',
     onModalContainerClickHandle
   );
+  // /-----для перезагрузки по закриттю вікна---
+  // location.reload();
+  // /-----для перезагрузки по закриттю вікна---
 }
 
 function onModalContainerClickHandle(evt) {
@@ -77,21 +96,17 @@ function onAddButtonsFunctinal(result) {
       ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_WATCHED)),
     ];
   }
-  console.log(watchedMoviesArr.some(({ id }) => id === result.id));
-  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
 
+  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
     addToWatchedBtnRef.textContent = 'Remove from watched';
   }
-  // --------------цей код додано мною
+  // --------------
   if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
     queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
   }
   const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
   if (queueMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
-
     addToQueueBtnRef.textContent = 'Remove from queue';
   }
 }
@@ -108,7 +123,6 @@ const onAddToWatchedHandle = evt => {
   }
   // check for unique value(id)
 
-  console.log(filmObject);
   if (watchedMoviesArr.lenght === 0) {
     watchedMoviesArr.push(filmObject);
     Notify.success('Film add to watched');
@@ -156,7 +170,6 @@ const onAddToQueueHandle = evt => {
     );
     Notify.warning('Film Removed from queue');
     let index = queueMoviesArr.findIndex(({ id }) => id === filmObject.id);
-    console.log(index);
     queueMoviesArr.splice(index, 1);
     addToQueueBtnRef.textContent = 'Add to queue';
   }
