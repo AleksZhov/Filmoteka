@@ -5,11 +5,12 @@
     position: fixed;
     left: 0;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    // background-color: rgba(0, 0, 0, 0.7);
     z-index: 2;   
     -webkit-transition: opacity 500ms ease-in;
     -moz-transition: opacity 500ms ease-in;
     transition: opacity 500ms ease-in;
+    
 }
 .modal:target {
     opacity: 1;
