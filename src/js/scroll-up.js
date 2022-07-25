@@ -21,7 +21,22 @@
   }
 
   let goTopBtn = document.querySelector('.back_to_top');
+  // -----------------------
+  let btnPage = document.querySelectorAll('.btnPages');
+  // for (index = 0; index < btnPage.length; index++) {
+  //   button = btnPage[index];
+  //   // console.log(button);
+  //   button.addEventListener('click', backToTop);
+  // }
+  // console.log(btnPage);
+  for (let page of btnPage) {
+    page.addEventListener('click', (e) => {e.preventDefault()
+      backToTop()});
+  }
 
   window.addEventListener('scroll', trackScroll);
   goTopBtn.addEventListener('click', backToTop);
+  
+  // btnPage.addEventListener('click', backToTop)
 })();
+

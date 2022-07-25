@@ -1,6 +1,7 @@
 import debounce from 'lodash.debounce';
 import { renderMarkupPopular } from './render-markup.js';
 import { pagination } from './pagination-library.js';
+import {backToTop} from './scroll-up.js'
 const DEBOUNCE_DELAY = 300;
 const inputEl = document.querySelector('.header_input');
 const debounceInput = debounce(serchValue, DEBOUNCE_DELAY);
@@ -50,8 +51,10 @@ const objApi = {
 
 pagination.on('beforeMove', function (eventData) {
   objApi.page = eventData.page;
+  
   if (objApi.value) {
     objApi
+    
       .ApiSearch()
       .then(chekFunc)
       .catch(error => {
@@ -60,4 +63,3 @@ pagination.on('beforeMove', function (eventData) {
       });
   }
 });
-console.log('hi');
