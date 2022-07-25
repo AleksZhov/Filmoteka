@@ -4,6 +4,10 @@ import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
 
 const movieAPI = new MovieAPI();
+let watchedMoviesArr = [];
+const LOCAL_STORAGE_WATCHED = 'WATCHED';
+let queueMoviesArr = [];
+const LOCAL_STORAGE_QUEUE = 'QUEUE';
 
 libraryGetRefs().containerListRef.addEventListener(
   'click',
@@ -24,13 +28,15 @@ function onFilmCardClickHandle(evt) {
   movieAPI
     .getFilms(id)
     .then(result => {
+      console.log(result);
       const markup = renderModalMarkup(result);
+
       libraryGetRefs().modalFilm.innerHTML = markup;
+
+      onAddButtonsFunctinal(result);
     })
     // Adding functioning for buttons
-    .then(() => {
-      onAddButtonsFunctinal();
-    })
+
     .catch(error => console.log(error));
 }
 
@@ -58,21 +64,38 @@ function onEscapeCloseHandle(evt) {
     onModalCloseBtnHandle();
   }
 }
-function onAddButtonsFunctinal() {
+function onAddButtonsFunctinal(result) {
+  currentResult = result;
   const addToWatchedBtnRef = document.querySelector('.js-btn-watched');
   addToWatchedBtnRef.addEventListener('click', onAddToWatchedHandle);
+  if (localStorage.getItem(LOCAL_STORAGE_WATCHED) !== null) {
+    watchedMoviesArr = [
+      ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_WATCHED)),
+    ];
+  }
+  console.log(watchedMoviesArr.some(({ id }) => id === result.id));
+  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
+    console.log('Check');
+
+    addToWatchedBtnRef.textContent = 'Remove from watched';
+  }
   // --------------цей код додано мною
+  if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
+    queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
+  }
   const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
+  if (queueMoviesArr.some(({ id }) => id === result.id)) {
+    console.log('Check');
+
+    addToQueueBtnRef.textContent = 'Remove from queue';
+  }
 }
 // -----------------------------------------------------------------
-let watchedMoviesArr = [];
-const LOCAL_STORAGE_WATCHED = 'WATCHED';
-let queueMoviesArr = [];
-const LOCAL_STORAGE_QUEUE = 'QUEUE';
 
 const onAddToWatchedHandle = evt => {
-  let id = evt.target.dataset.id;
+  let filmObject = currentResult;
+  // let id = filmObject.id;
   const addToWatchedBtnRef = document.querySelector('.js-btn-watched');
   if (localStorage.getItem(LOCAL_STORAGE_WATCHED) !== null) {
     watchedMoviesArr = [
@@ -80,14 +103,22 @@ const onAddToWatchedHandle = evt => {
     ];
   }
   // check for unique value(id)
-  if (!watchedMoviesArr.includes(id)) {
-    watchedMoviesArr.push(id);
+
+  console.log(filmObject);
+  if (watchedMoviesArr.lenght === 0) {
+    watchedMoviesArr.push(filmObject);
+    Notify.success('Film add to watched');
+    addToWatchedBtnRef.textContent = 'Remove from watched';
+  } else if (!watchedMoviesArr.some(({ id }) => id === filmObject.id)) {
+    watchedMoviesArr.push(filmObject);
     Notify.success('Film add to watched');
     addToWatchedBtnRef.textContent = 'Remove from watched';
   } else {
-    watchedMoviesArr = watchedMoviesArr.filter(film => Number(film) !== id);
+    watchedMoviesArr = watchedMoviesArr.filter(
+      film => Number(film) !== filmObject.id
+    );
     Notify.warning('Film Remove from watched');
-    let index = watchedMoviesArr.indexOf(id);
+    let index = watchedMoviesArr.findIndex(({ id }) => id === filmObject.id);
     watchedMoviesArr.splice(index, 1);
     addToWatchedBtnRef.textContent = 'Add to watched';
   }
@@ -99,24 +130,31 @@ const onAddToWatchedHandle = evt => {
     console.error('Set state error: ', error.message);
   }
 };
-
 // --------------onAddToQueueHandle
 const onAddToQueueHandle = evt => {
-  let id = evt.target.dataset.id;
+  let filmObject = currentResult;
+  const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
     queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
   }
   // check for unique value(id)
-  if (!queueMoviesArr.includes(id)) {
-    queueMoviesArr.push(id);
-    Notify.success('Фільм додано');
-    evt.target.textContent = 'Remove from queue';
+  if (queueMoviesArr.lenght === 0) {
+    queueMoviesArr.push(filmObject);
+    Notify.success('Film added to queue');
+    addToQueueBtnRef.textContent = 'Remove from queue';
+  } else if (!queueMoviesArr.some(({ id }) => id === filmObject.id)) {
+    queueMoviesArr.push(filmObject);
+    Notify.success('Film added to queue');
+    addToQueueBtnRef.textContent = 'Remove from queue';
   } else {
-    queueMoviesArr = queueMoviesArr.filter(film => Number(film) !== id);
-    Notify.warning('Film Remove from queue');
-    let index = queueMoviesArr.indexOf(id);
+    queueMoviesArr = queueMoviesArr.filter(
+      film => Number(film) !== filmObject.id
+    );
+    Notify.warning('Film Removed from queue');
+    let index = queueMoviesArr.findIndex(({ id }) => id === filmObject.id);
+    console.log(index);
     queueMoviesArr.splice(index, 1);
-    evt.target.textContent = 'Add to queue';
+    addToQueueBtnRef.textContent = 'Add to queue';
   }
   try {
     const serializedState = JSON.stringify(queueMoviesArr);
