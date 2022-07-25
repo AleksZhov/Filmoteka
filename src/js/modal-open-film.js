@@ -34,7 +34,10 @@ function onFilmCardClickHandle(evt) {
     })
     // Adding functioning for buttons
 
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      getRefs().loaderModal.classList.add('visually-hidden');
+    });
 }
 
 getRefs().modalCloseBtnRef.addEventListener('click', onModalCloseBtnHandle);
