@@ -9,6 +9,7 @@ let watchedMoviesArr = [];
 const LOCAL_STORAGE_WATCHED = 'WATCHED';
 let queueMoviesArr = [];
 const LOCAL_STORAGE_QUEUE = 'QUEUE';
+const modal = document.querySelector('.modal');
 
 getRefs().containerListRef.addEventListener('click', onFilmCardClickHandle);
 function onFilmCardClickHandle(evt) {
@@ -25,10 +26,12 @@ function onFilmCardClickHandle(evt) {
   movieAPI
     .getFilms(id)
     .then(result => {
-      console.log(result);
       const markup = renderModalMarkup(result);
 
       getRefs().modalFilm.innerHTML = markup;
+      modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
+		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
+      modal.style.backgroundSize = 'cover';
 
       onAddButtonsFunctinal(result);
     })

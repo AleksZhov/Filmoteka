@@ -3,6 +3,7 @@ import { MovieAPI } from '../movieAPI.js';
 import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
 import getRefs from '../getRefs';
+const modal = document.querySelector('.modal');
 
 const movieAPI = new MovieAPI();
 let currentResult = {};
@@ -45,8 +46,10 @@ function onFilmCardClickHandle(evt) {
   movieAPI
     .getFilms(id)
     .then(result => {
-      // console.log(result);
       const markup = renderModalMarkup(result);
+      modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
+		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
+      modal.style.backgroundSize = 'cover';
 
       libraryGetRefs().modalFilm.innerHTML = markup;
 

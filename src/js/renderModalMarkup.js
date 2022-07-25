@@ -9,6 +9,7 @@ export function renderModalMarkup({
   overview,
   poster_path,
   original_title,
+  backdrop_path,
 }) {
   let genresCreate = genres
     .map(({ name }) => {
@@ -53,7 +54,5 @@ export function renderModalMarkup({
             </button>
           </div>
         </div>
-     
-    
 `;
 }
