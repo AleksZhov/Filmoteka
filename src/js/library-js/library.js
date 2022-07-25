@@ -5,7 +5,6 @@ import Notiflix, { Notify } from 'notiflix';
 
 const movieAPI = new MovieAPI();
 
-const watchedMovies = [];
 const LOCAL_STORAGE_WATCHED_KEY = 'WATCHED';
 localStorage.getItem(LOCAL_STORAGE_WATCHED_KEY);
 const receivedDataWatched = JSON.parse(
@@ -20,17 +19,11 @@ function onWatchBtnHandle() {
     return;
   }
   libraryGetRefs().containerListRef.innerHTML = '';
-  receivedDataWatched.forEach(element => {
-    movieAPI
-      .getFilms(element)
-      .then(result => {
-        const markup = libraryRenderMarkup(result);
 
-        libraryGetRefs().containerListRef.insertAdjacentHTML(
-          'beforeend',
-          markup
-        );
-      })
-      .catch(error => console.log(error));
-  });
+  const markup = receivedDataWatched
+    .map(element => {
+      return libraryRenderMarkup(element);
+    })
+    .join('');
+  libraryGetRefs().containerListRef.insertAdjacentHTML('beforeend', markup);
 }
