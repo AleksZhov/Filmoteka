@@ -75,7 +75,7 @@ function onAddButtonsFunctinal(result) {
       ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_WATCHED)),
     ];
   }
-  console.log(watchedMoviesArr.some(({ id }) => id === result.id));
+
   if (watchedMoviesArr.some(({ id }) => id === result.id)) {
     console.log('Check');
 
@@ -106,7 +106,6 @@ const onAddToWatchedHandle = evt => {
   }
   // check for unique value(id)
 
-  console.log(filmObject);
   if (watchedMoviesArr.lenght === 0) {
     watchedMoviesArr.push(filmObject);
     Notify.success('Film add to watched');

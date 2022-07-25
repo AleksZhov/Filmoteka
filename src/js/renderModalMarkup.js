@@ -32,7 +32,7 @@ export function renderModalMarkup({
             </div>
             <div class="film__details--dinamic">
               <h3 class="film__vote-votes">
-                <span class="vote">${vote_average}</span> /
+                <span class="vote">${vote_average.toFixed(1)}</span> /
                 <span class="votes">${vote_count}</span>
               </h3>
               <h3 class="film__popularity">${popularity}</h3>
