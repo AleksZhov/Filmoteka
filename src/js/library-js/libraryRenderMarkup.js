@@ -22,7 +22,7 @@ export function libraryRenderMarkup({
     <p class="film-card__flex__text">${genresCreate} |
     </p>
     <p class="film-card__flex__text">${release_date.slice(0, -6)}</p>
-    <p class="film-card__flex__rating">${vote_average}</p>
+    <p class="film-card__flex__rating">${vote_average.toFixed(1)}</p>
     </div>
     </li>
 `;
