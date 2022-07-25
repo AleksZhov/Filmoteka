@@ -1,18 +1,20 @@
 <section class="main-section">
   <a class="back_to_top" title="Наверх">
     <svg class="icon-arrow-up" width="40" height="40">
-      <use href="./images/sprite.svg#icon-arrow-up"></use></svg
+      <use href="./images/sprite.svg#icon-arrow-up" /></svg
   ></a>
-  <div class="container js-container"><ul class="container__list"></ul></div>
+  <div class="container js-container">
+    <ul class="container__list">
+      <!-- Картинка, на випадок пустої бібліотеки користувача -->
+    </ul>
+    <div
+      class="container errorImg__container errorImg__container--Library errorImg-hidden is-hidden js-empty-list-container"
+    >
+      <p class="alert_greet">Hello movie lover!</p>
+      <p class="alert_text">
+        You haven't added a movie yet. Please make your choice.
+      </p>
+      <img src="./images/makechoice.gif" alt="Choice" class="emptyImg" />
+    </div>
+  </div>
 </section>
-
-<!-- Картинка, на випадок пустої бібліотеки користувача -->
-<div
-  class="container errorImg__container errorImg__container--Library errorImg-hidden is-hidden js-empty-list-container"
->
-  <p class="alert_greet">Hello movie lover!</p>
-  <p class="alert_text">
-    You haven't added a movie yet. Please make your choice.
-  </p>
-  <img src="./images/makechoice.gif" alt="Choice" class="emptyImg" />
-</div>

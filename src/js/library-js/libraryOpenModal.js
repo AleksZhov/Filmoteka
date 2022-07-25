@@ -2,31 +2,13 @@ import libraryGetRefs from './libraryGetRefs.js';
 import { MovieAPI } from '../movieAPI.js';
 import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
+
 import getRefs from '../getRefs';
 const modal = document.querySelector('.modal');
 
+
 const movieAPI = new MovieAPI();
-let currentResult = {};
-let watchedMoviesArr = [];
-const LOCAL_STORAGE_WATCHED = 'WATCHED';
-let queueMoviesArr = [];
-const LOCAL_STORAGE_QUEUE = 'QUEUE';
 
-// ------Перевірка масивів та додавання картинки якщо пусто----
-
-// const errorImg = document.querySelector('.js-empty-list-container');
-
-// if (watchedMoviesArr.length === 0) {
-//   errorImg.classList.remove('is-hidden', 'errorImg-hidden');
-// } else {
-//   errorImg.classList.add('is-hidden', 'errorImg-hidden');
-// }
-// if (watchedMoviesArr.length === 0) {
-//   errorImg.classList.remove('is-hidden', 'errorImg-hidden');
-// } else {
-//   errorImg.classList.add('is-hidden', 'errorImg-hidden');
-// }
-// ------------------------------------------------------
 libraryGetRefs().containerListRef.addEventListener(
   'click',
   onFilmCardClickHandle
@@ -47,20 +29,18 @@ function onFilmCardClickHandle(evt) {
     .getFilms(id)
     .then(result => {
       const markup = renderModalMarkup(result);
+
       modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
 		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
       modal.style.backgroundSize = 'cover';
 
       libraryGetRefs().modalFilm.innerHTML = markup;
-
-      onAddButtonsFunctinal(result);
     })
     // Adding functioning for buttons
-
-    .catch(error => console.log(error))
-    .finally(() => {
-      getRefs().loaderModal.classList.add('visually-hidden');
-    });
+    .then(() => {
+      onAddButtonsFunctinal();
+    })
+    .catch(error => console.log(error));
 }
 
 libraryGetRefs().modalCloseBtnRef.addEventListener(
@@ -75,9 +55,6 @@ function onModalCloseBtnHandle() {
     'click',
     onModalContainerClickHandle
   );
-  // /-----для перезагрузки по закриттю вікна---
-  // location.reload();
-  // /-----для перезагрузки по закриттю вікна---
 }
 
 function onModalContainerClickHandle(evt) {
@@ -90,34 +67,21 @@ function onEscapeCloseHandle(evt) {
     onModalCloseBtnHandle();
   }
 }
-function onAddButtonsFunctinal(result) {
-  currentResult = result;
+function onAddButtonsFunctinal() {
   const addToWatchedBtnRef = document.querySelector('.js-btn-watched');
   addToWatchedBtnRef.addEventListener('click', onAddToWatchedHandle);
-  if (localStorage.getItem(LOCAL_STORAGE_WATCHED) !== null) {
-    watchedMoviesArr = [
-      ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_WATCHED)),
-    ];
-  }
-
-  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
-    addToWatchedBtnRef.textContent = 'Remove from watched';
-  }
-  // --------------
-  if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
-    queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
-  }
+  // --------------цей код додано мною
   const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
-  if (queueMoviesArr.some(({ id }) => id === result.id)) {
-    addToQueueBtnRef.textContent = 'Remove from queue';
-  }
 }
 // -----------------------------------------------------------------
+let watchedMoviesArr = [];
+const LOCAL_STORAGE_WATCHED = 'WATCHED';
+let queueMoviesArr = [];
+const LOCAL_STORAGE_QUEUE = 'QUEUE';
 
 const onAddToWatchedHandle = evt => {
-  let filmObject = currentResult;
-  // let id = filmObject.id;
+  let id = evt.target.dataset.id;
   const addToWatchedBtnRef = document.querySelector('.js-btn-watched');
   if (localStorage.getItem(LOCAL_STORAGE_WATCHED) !== null) {
     watchedMoviesArr = [
@@ -125,21 +89,14 @@ const onAddToWatchedHandle = evt => {
     ];
   }
   // check for unique value(id)
-
-  if (watchedMoviesArr.lenght === 0) {
-    watchedMoviesArr.push(filmObject);
-    Notify.success('Film add to watched');
-    addToWatchedBtnRef.textContent = 'Remove from watched';
-  } else if (!watchedMoviesArr.some(({ id }) => id === filmObject.id)) {
-    watchedMoviesArr.push(filmObject);
+  if (!watchedMoviesArr.includes(id)) {
+    watchedMoviesArr.push(id);
     Notify.success('Film add to watched');
     addToWatchedBtnRef.textContent = 'Remove from watched';
   } else {
-    watchedMoviesArr = watchedMoviesArr.filter(
-      film => Number(film) !== filmObject.id
-    );
+    watchedMoviesArr = watchedMoviesArr.filter(film => Number(film) !== id);
     Notify.warning('Film Remove from watched');
-    let index = watchedMoviesArr.findIndex(({ id }) => id === filmObject.id);
+    let index = watchedMoviesArr.indexOf(id);
     watchedMoviesArr.splice(index, 1);
     addToWatchedBtnRef.textContent = 'Add to watched';
   }
@@ -151,30 +108,24 @@ const onAddToWatchedHandle = evt => {
     console.error('Set state error: ', error.message);
   }
 };
+
 // --------------onAddToQueueHandle
 const onAddToQueueHandle = evt => {
-  let filmObject = currentResult;
-  const addToQueueBtnRef = document.querySelector('.js-btn-queue');
+  let id = evt.target.dataset.id;
   if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
     queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
   }
   // check for unique value(id)
-  if (queueMoviesArr.lenght === 0) {
-    queueMoviesArr.push(filmObject);
-    Notify.success('Film added to queue');
-    addToQueueBtnRef.textContent = 'Remove from queue';
-  } else if (!queueMoviesArr.some(({ id }) => id === filmObject.id)) {
-    queueMoviesArr.push(filmObject);
-    Notify.success('Film added to queue');
-    addToQueueBtnRef.textContent = 'Remove from queue';
+  if (!queueMoviesArr.includes(id)) {
+    queueMoviesArr.push(id);
+    Notify.success('Фільм додано');
+    evt.target.textContent = 'Remove from queue';
   } else {
-    queueMoviesArr = queueMoviesArr.filter(
-      film => Number(film) !== filmObject.id
-    );
-    Notify.warning('Film Removed from queue');
-    let index = queueMoviesArr.findIndex(({ id }) => id === filmObject.id);
+    queueMoviesArr = queueMoviesArr.filter(film => Number(film) !== id);
+    Notify.warning('Film Remove from queue');
+    let index = queueMoviesArr.indexOf(id);
     queueMoviesArr.splice(index, 1);
-    addToQueueBtnRef.textContent = 'Add to queue';
+    evt.target.textContent = 'Add to queue';
   }
   try {
     const serializedState = JSON.stringify(queueMoviesArr);
