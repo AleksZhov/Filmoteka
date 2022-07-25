@@ -122,6 +122,16 @@
 .is-hidden-text {
   visibility: hidden;
 }
+.errorImg__container{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+}
+.is-hidden-giv {
+  visibility: hidden;
+  display: none;
+}
+
 .header_warning {
   position: absolute;
   bottom: 44px;

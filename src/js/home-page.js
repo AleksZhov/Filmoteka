@@ -10,15 +10,20 @@ jsonApi
   .getFilmotekaCard()
   .then(film => (getRefs().div.innerHTML = renderMarkupPopular(film.results)));
 
-jsonApi.getFilmotekaCard().then(film => {});
+// jsonApi.getFilmotekaCard().then(film => {});
 
-pagination.on('afterMove', function (eventData) {
+export function paginationPopul (eventData) {
   jsonApi.page = eventData.page;
   jsonApi
     .getFilmotekaCard()
     .then(
-      film => (getRefs().div.innerHTML = renderMarkupPopular(film.results))
-    );
-});
+      film => (getRefs().div.innerHTML = renderMarkupPopular(film.results))  
+    ).finally( () => { window.scroll({
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+     });})
+};
 
 getRefs().body.classList.add('overflow');
+pagination.on('afterMove', paginationPopul);

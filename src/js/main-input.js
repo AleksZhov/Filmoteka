@@ -1,40 +1,42 @@
 import debounce from 'lodash.debounce';
 import { renderMarkupPopular } from './render-markup.js';
 import { pagination } from './pagination-library.js';
-import {backToTop} from './scroll-up.js'
+import {paginationPopul} from './home-page.js'
 const DEBOUNCE_DELAY = 300;
 const inputEl = document.querySelector('.header_input');
 const debounceInput = debounce(serchValue, DEBOUNCE_DELAY);
 const value = inputEl.addEventListener('input', debounceInput);
 const domEl = document.querySelector('.container__list');
 const noName = document.querySelector('#noName');
+const noGiv = document.querySelector('#noGiv');
 
 function serchValue(evt) {
   let { value } = evt.target;
   objApi.value = value;
-  // objApi.page = 1;
-  pagination.movePageTo(1);
-  objApi
-    .ApiSearch()
-    .then(chekFunc)
-    .catch(error => {
-      console.log('error', error);
-      noName.classList.remove('is-hidden-text');
-      if (value === '') {
-        noName.classList.add('is-hidden-text');
+  if (objApi.value === '') {
+      noName.classList.add('is-hidden-text');
       }
-    });
+
+  pagination.off('beforeMove', paginationData)
+  pagination.off('afterMove', paginationPopul)
+  pagination.on('beforeMove',paginationData)
+
+  pagination.movePageTo(1);
 }
 
 function chekFunc(film) {
-  // console.log(film.results);
-  film.results.length === 0
-    ? noName.classList.remove('is-hidden-text')
-    : noName.classList.add('is-hidden-text');
-
+  if(film.results.length === 0){
+    noName.classList.remove('is-hidden-text') 
+    noGiv.classList.remove('is-hidden-giv')
+  }else{
+    noName.classList.add('is-hidden-text')
+    noGiv.classList.add('is-hidden-giv');
+  }
+      
   const markup = renderMarkupPopular(film.results);
   domEl.innerHTML = markup;
 }
+
 const objApi = {
   value: '',
   page: 1,
@@ -49,17 +51,14 @@ const objApi = {
   },
 };
 
-pagination.on('beforeMove', function (eventData) {
+ function paginationData(eventData) {
   objApi.page = eventData.page;
-  
   if (objApi.value) {
     objApi
-    
       .ApiSearch()
       .then(chekFunc)
       .catch(error => {
         console.log('error', error);
-        noName.classList.remove('is-hidden-text');
-      });
+       });
   }
-});
+};
