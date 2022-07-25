@@ -2,11 +2,9 @@ import libraryGetRefs from './libraryGetRefs.js';
 import { MovieAPI } from '../movieAPI.js';
 import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
-<<<<<<< HEAD
+
 import getRefs from '../getRefs';
 const modal = document.querySelector('.modal');
-=======
->>>>>>> b9afc574e2f114d1b204f23cf78eed35afb15015
 
 const movieAPI = new MovieAPI();
 
@@ -30,13 +28,11 @@ function onFilmCardClickHandle(evt) {
     .getFilms(id)
     .then(result => {
       const markup = renderModalMarkup(result);
-<<<<<<< HEAD
+
       modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
 		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
       modal.style.backgroundSize = 'cover';
 
-=======
->>>>>>> b9afc574e2f114d1b204f23cf78eed35afb15015
       libraryGetRefs().modalFilm.innerHTML = markup;
     })
     // Adding functioning for buttons
