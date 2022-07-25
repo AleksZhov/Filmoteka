@@ -2,6 +2,7 @@ import libraryGetRefs from './libraryGetRefs.js';
 import { MovieAPI } from '../movieAPI.js';
 import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
+import getRefs from '../getRefs';
 
 const movieAPI = new MovieAPI();
 let watchedMoviesArr = [];
@@ -37,7 +38,10 @@ function onFilmCardClickHandle(evt) {
     })
     // Adding functioning for buttons
 
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      getRefs().loaderModal.classList.add('visually-hidden');
+    });
 }
 
 libraryGetRefs().modalCloseBtnRef.addEventListener(
