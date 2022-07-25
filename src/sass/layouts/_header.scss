@@ -58,6 +58,7 @@
   border-bottom: 3px solid red;
 }
 .header_item {
+  transition: all 250ms linear;
   color: #ffffff;
   cursor: pointer;
   font-weight: 500;
@@ -200,6 +201,9 @@
   padding-bottom: 60px;
 }
 .header_btn {
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 250ms linear,background-color 250ms linear;
   height: 44px;
   width: 130px;
   border-radius: 5px;
