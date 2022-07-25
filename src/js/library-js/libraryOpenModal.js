@@ -6,7 +6,6 @@ import Notiflix, { Notify } from 'notiflix';
 import getRefs from '../getRefs';
 const modal = document.querySelector('.modal');
 
-
 const movieAPI = new MovieAPI();
 
 libraryGetRefs().containerListRef.addEventListener(
@@ -40,7 +39,10 @@ function onFilmCardClickHandle(evt) {
     .then(() => {
       onAddButtonsFunctinal();
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => {
+      getRefs().loaderModal.classList.add('visually-hidden');
+    });
 }
 
 libraryGetRefs().modalCloseBtnRef.addEventListener(
