@@ -102,7 +102,7 @@
     color: $accent-bg-color;
 
     @media screen and (min-width: $desktop) {
-            @include font(500, 20px, 1.2, null);
+            @include font(500, 18px, 1.2, null);
         }
 }
 
