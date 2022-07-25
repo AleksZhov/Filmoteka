@@ -1,4 +1,5 @@
 .lds-ring {
+    
     display: inline-block;
     position: relative;
     width: 80px;
@@ -54,8 +55,31 @@
         height: 100%;
 }
 
-.overflow {
-    overflow: hidden;
-}
 
+
+
+
+.visually-hidden {
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            border: 0;
+            padding: 0;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            margin: -1px;
+        }
+
+
+#preloader--modal {
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 2;
+        width: 764px;
+        height: 478px;
+}
 
