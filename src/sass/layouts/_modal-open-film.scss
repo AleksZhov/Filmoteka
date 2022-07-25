@@ -30,10 +30,12 @@
     padding: 48px 20px;
     width: 280px;
     height: 500px;
-    overflow-y: scroll;
     border-radius: 5px;
     text-align: left;
     background-color: $white-color;
+    @media screen and (max-width: $tablet) {
+            overflow-y: scroll;
+        }
     @media screen and (min-width: $tablet) {
         width: 704px;
         height: 552px;
@@ -53,9 +55,15 @@
     background: transparent;
 }
 .modal__icon {
+    transition: fill 250ms linear;
+    cursor: pointer;
     width: 30px;
     height: 30px;
+    &:hover, &:focus{
+        fill: $orange-color;
+    }
 }
+
 .modal__img {
     margin-left: auto;
     margin-right: auto;
@@ -203,6 +211,7 @@
 
 }
 .modal__btn {
+    cursor: pointer;
     width: 110px;
     height: 44px;
     font-weight: 500;
@@ -214,6 +223,7 @@
     border: 1px solid $backdrop-color;
     border-radius: 5px;
     background: transparent;
+    transition: color 150ms linear,background-color 250ms linear;
     @media screen and (min-width: $tablet) {
         width: 125.03px;
     }
@@ -223,7 +233,7 @@
         &:nth-child(n + 2) {
                 margin-left: 15px;
             }
-    &:focus {
+    &:focus, &:hover {
     border: none;
     box-shadow: 0 0 0 4px scale-color($orange-color);
 }
@@ -239,4 +249,14 @@
     color: $white-color;
     background-color: scale-color($orange-color);
     border: none;
+}
+
+
+.modal__body::-webkit-scrollbar {
+    width: 7px;
+}
+
+.modal__body::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(#ff6b08, rgba(255, 107, 1, 0.6));
+    border-radius: 10px;
 }

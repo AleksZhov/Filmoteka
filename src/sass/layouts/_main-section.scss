@@ -29,13 +29,14 @@
         
     border-radius: 10px;
     background-color: transparent;
+    &:hover,
+        &:focus {
+            transform: scale(1.03) translateZ(0);
+    
+        }
 }
 
-.film-card__item:hover,
-.film-card__item:hover {
-    transform: scale(1.03) translateZ(0);
-    // box-shadow: 0px -5px 10px 2px rgba(255, 107, 8, 1);
-}
+
 
 .film-card__item:not(:last-child) {
     @media screen and (max-width: $tablet) {
@@ -61,16 +62,11 @@
                     height: 574px;
                     margin-bottom: 12px;
                  }
+                                  &:hover,
+                                  &:focus {
+                                      box-shadow: 0px 0px 10px 2px rgb(0, 0, 0);
+                                  }
 }
-
-                .film-card__img:hover,
-                .film-card__img:focus {
-                    box-shadow: 0px 0px 10px 2px rgb(0, 0, 0);
-                }
-
-
-               
-
 
 
 .film-card__title {
