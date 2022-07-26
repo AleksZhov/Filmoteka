@@ -2,13 +2,23 @@ import libraryGetRefs from './libraryGetRefs.js';
 import { MovieAPI } from '../movieAPI.js';
 import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
-import getRefs from '../getRefs';
 
+import getRefs from '../getRefs';
 const movieAPI = new MovieAPI();
+
+let currentResult = {};
 let watchedMoviesArr = [];
 const LOCAL_STORAGE_WATCHED = 'WATCHED';
 let queueMoviesArr = [];
 const LOCAL_STORAGE_QUEUE = 'QUEUE';
+
+function watchedPageLoad() {
+  window.onload = function (event) {
+    document.querySelector('.header_btn-Watched').click();
+    const btnLoadWatched = document.querySelector('.header_btn-Watched');
+  };
+}
+watchedPageLoad();
 
 libraryGetRefs().containerListRef.addEventListener(
   'click',
@@ -29,11 +39,14 @@ function onFilmCardClickHandle(evt) {
   movieAPI
     .getFilms(id)
     .then(result => {
-      console.log(result);
       const markup = renderModalMarkup(result);
 
+      getRefs().modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
+		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
+      getRefs().modal.style.backgroundSize = 'cover';
+      getRefs().html.style.overflow = 'hidden';
+      getRefs().backToTop.style.display = 'none';
       libraryGetRefs().modalFilm.innerHTML = markup;
-
       onAddButtonsFunctinal(result);
     })
     // Adding functioning for buttons
@@ -55,17 +68,22 @@ function onModalCloseBtnHandle() {
   libraryGetRefs().modalContainer.removeEventListener(
     'click',
     onModalContainerClickHandle
+    
   );
 }
 
 function onModalContainerClickHandle(evt) {
   if (evt.target === evt.currentTarget) {
     onModalCloseBtnHandle();
+    getRefs().html.style.overflow = 'visible';
+    getRefs().backToTop.style.display = 'block';
   }
 }
 function onEscapeCloseHandle(evt) {
   if (evt.key === 'Escape') {
     onModalCloseBtnHandle();
+    getRefs().html.style.overflow = 'visible';
+    getRefs().backToTop.style.display = 'block';
   }
 }
 function onAddButtonsFunctinal(result) {
@@ -77,10 +95,8 @@ function onAddButtonsFunctinal(result) {
       ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_WATCHED)),
     ];
   }
-  console.log(watchedMoviesArr.some(({ id }) => id === result.id));
-  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
 
+  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
     addToWatchedBtnRef.textContent = 'Remove from watched';
   }
   // --------------цей код додано мною
@@ -90,8 +106,6 @@ function onAddButtonsFunctinal(result) {
   const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
   if (queueMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
-
     addToQueueBtnRef.textContent = 'Remove from queue';
   }
 }
@@ -99,7 +113,6 @@ function onAddButtonsFunctinal(result) {
 
 const onAddToWatchedHandle = evt => {
   let filmObject = currentResult;
-  // let id = filmObject.id;
   const addToWatchedBtnRef = document.querySelector('.js-btn-watched');
   if (localStorage.getItem(LOCAL_STORAGE_WATCHED) !== null) {
     watchedMoviesArr = [
@@ -107,9 +120,7 @@ const onAddToWatchedHandle = evt => {
     ];
   }
   // check for unique value(id)
-
-  console.log(filmObject);
-  if (watchedMoviesArr.lenght === 0) {
+  if (watchedMoviesArr.length === 0) {
     watchedMoviesArr.push(filmObject);
     Notify.success('Film add to watched');
     addToWatchedBtnRef.textContent = 'Remove from watched';
@@ -134,6 +145,7 @@ const onAddToWatchedHandle = evt => {
     console.error('Set state error: ', error.message);
   }
 };
+
 // --------------onAddToQueueHandle
 const onAddToQueueHandle = evt => {
   let filmObject = currentResult;
@@ -156,7 +168,6 @@ const onAddToQueueHandle = evt => {
     );
     Notify.warning('Film Removed from queue');
     let index = queueMoviesArr.findIndex(({ id }) => id === filmObject.id);
-    console.log(index);
     queueMoviesArr.splice(index, 1);
     addToQueueBtnRef.textContent = 'Add to queue';
   }

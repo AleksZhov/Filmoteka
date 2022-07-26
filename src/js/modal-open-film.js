@@ -25,10 +25,14 @@ function onFilmCardClickHandle(evt) {
   movieAPI
     .getFilms(id)
     .then(result => {
-      console.log(result);
       const markup = renderModalMarkup(result);
 
       getRefs().modalFilm.innerHTML = markup;
+      getRefs().modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
+		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
+      getRefs().modal.style.backgroundSize = 'cover';
+      getRefs().html.style.overflow = 'hidden';
+      getRefs().backToTop.style.display = 'none';
 
       onAddButtonsFunctinal(result);
     })
@@ -54,12 +58,16 @@ function onModalCloseBtnHandle() {
 function onModalContainerClickHandle(evt) {
   if (evt.target === evt.currentTarget) {
     onModalCloseBtnHandle();
+    getRefs().html.style.overflow = 'visible';
+    getRefs().backToTop.style.display = 'block';
   }
 }
 
 function onEscapeCloseHandle(evt) {
   if (evt.key === 'Escape') {
     onModalCloseBtnHandle();
+    getRefs().html.style.overflow = 'visible';
+    getRefs().backToTop.style.display = 'block';
   }
 }
 // -----------------------------------------------------------
@@ -72,10 +80,8 @@ function onAddButtonsFunctinal(result) {
       ...JSON.parse(localStorage.getItem(LOCAL_STORAGE_WATCHED)),
     ];
   }
-  console.log(watchedMoviesArr.some(({ id }) => id === result.id));
-  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
 
+  if (watchedMoviesArr.some(({ id }) => id === result.id)) {
     addToWatchedBtnRef.textContent = 'Remove from watched';
   }
   // --------------цей код додано мною
@@ -85,8 +91,6 @@ function onAddButtonsFunctinal(result) {
   const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
   if (queueMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
-
     addToQueueBtnRef.textContent = 'Remove from queue';
   }
 }
@@ -103,8 +107,7 @@ const onAddToWatchedHandle = evt => {
   }
   // check for unique value(id)
 
-  console.log(filmObject);
-  if (watchedMoviesArr.lenght === 0) {
+  if (watchedMoviesArr.length === 0) {
     watchedMoviesArr.push(filmObject);
     Notify.success('Film add to watched');
     addToWatchedBtnRef.textContent = 'Remove from watched';

@@ -79,11 +79,11 @@
     margin: -1px;
 }
 
-body::-webkit-scrollbar {
-  width: 1em;
+html::-webkit-scrollbar {
+width: 10px;
 }
 
-body::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb {
   background-image: linear-gradient(#ff6b08, rgba(255, 107, 1, 0.6));
   border-radius: 10px;
 }
