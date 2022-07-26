@@ -10,7 +10,7 @@ jsonApi
   .getFilmotekaCard()
   .then(film => (getRefs().div.innerHTML = renderMarkupPopular(film.results)))
   .finally(() => {
-    getRefs().loader.classList.add('visually-hidden');
+    getRefs().loader.classList.add('visually-hidden'); 
   });
 
 export function paginationPopul(eventData) {

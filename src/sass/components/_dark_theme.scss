@@ -1,0 +1,176 @@
+body.dark {
+background: #1B1B1B;
+    color: #000000;
+    background: linear-gradient(to bottom, #1B1B1B 0%, #0C0C0C 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1B1B1B), color-stop(100%, #0C0C0C));
+    background: -webkit-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+    background: -moz-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+    background: -o-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+    background: -ms-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1B1B1B', endColorstr='#0C0C0C', GradientType=0);
+    border: 1px solid #000000;
+    text-shadow: 0 1px 0 #2A2A2A;
+    -webkit-text-shadow: 0 1px 0 #2A2A2A;
+    -moz-text-shadow: 0 1px 0 #2A2A2A;
+    box-shadow: inset 0 1px 0 #2A2A2A;
+    -webkit-box-shadow: inset 0 1px 0 #2A2A2A;
+    -moz-box-shadow: inset 0 1px 0 #2A2A2A;
+}
+
+body.dark .modal__body {
+    background: #1B1B1B;
+        color: #000000;
+        background: linear-gradient(to bottom, #1B1B1B 0%, #0C0C0C 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1B1B1B), color-stop(100%, #0C0C0C));
+        background: -webkit-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        background: -moz-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        background: -o-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        background: -ms-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1B1B1B', endColorstr='#0C0C0C', GradientType=0);
+        border: 1px solid #000000;
+        text-shadow: 0 1px 0 #2A2A2A;
+        -webkit-text-shadow: 0 1px 0 #2A2A2A;
+        -moz-text-shadow: 0 1px 0 #2A2A2A;
+        box-shadow: inset 0 1px 0 #2A2A2A;
+        -webkit-box-shadow: inset 0 1px 0 #2A2A2A;
+        -moz-box-shadow: inset 0 1px 0 #2A2A2A;
+
+}
+
+body.dark .film-card__title {
+    color: $white-color;
+}
+
+body.dark .film__name {
+    color: $white-color;
+}
+
+body.dark h3 {
+    color: $white-color;
+}
+
+body.dark .film__about {
+    color: $white-color;
+}
+
+body.dark .film__text {
+    color: $white-color;
+}
+
+body.dark .modal__btn {
+    border: 1px solid $white-color;
+    color: $white-color;
+}
+
+body.dark .modal__btn:hover,
+.modal__btn:active {
+    color: $backdrop-color;
+    border: none;
+    color: $white-color;
+}
+
+body.dark .modal__icon {
+    fill: $white-color;
+}
+
+body.dark .modal__icon:hover,
+.modal__icon:focus {
+    fill: $orange-color
+}
+
+body.dark .film-card__img:hover,
+.film-card__img:focus {
+    box-shadow: 0 0 10px 2px $orange-color;
+}
+
+body.dark .footer {
+
+
+
+    background: #3B444B;
+        color: #1D262D;
+        background: linear-gradient(to bottom, #3B444B 0%, #2C353C 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3B444B), color-stop(100%, #2C353C));
+        background: -webkit-linear-gradient(top, #3B444B 0%, #2C353C 100%);
+        background: -moz-linear-gradient(top, #3B444B 0%, #2C353C 100%);
+        background: -o-linear-gradient(top, #3B444B 0%, #2C353C 100%);
+        background: -ms-linear-gradient(top, #3B444B 0%, #2C353C 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3B444B', endColorstr='#2C353C', GradientType=0);
+        border: 1px solid #1D262D;
+        text-shadow: 0 1px 0 #4A535A;
+        -webkit-text-shadow: 0 1px 0 #4A535A;
+        -moz-text-shadow: 0 1px 0 #4A535A;
+        box-shadow: inset 0 1px 0 #4A535A;
+        -webkit-box-shadow: inset 0 1px 0 #4A535A;
+        -moz-box-shadow: inset 0 1px 0 #4A535A;
+}
+
+body.dark .footer__text {
+    color: $white-color;
+}
+
+body.dark .team-name {
+    color: $white-color;
+}
+body.dark .team-title {
+    color: $white-color;
+}
+
+body.dark .basicLightbox__placeholder{
+    background: #1B1B1B;
+        color: #000000;
+        background: linear-gradient(to bottom, #1B1B1B 0%, #0C0C0C 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1B1B1B), color-stop(100%, #0C0C0C));
+        background: -webkit-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        background: -moz-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        background: -o-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        background: -ms-linear-gradient(top, #1B1B1B 0%, #0C0C0C 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1B1B1B', endColorstr='#0C0C0C', GradientType=0);
+        border: 1px solid #000000;
+        text-shadow: 0 1px 0 #2A2A2A;
+        -webkit-text-shadow: 0 1px 0 #2A2A2A;
+        -moz-text-shadow: 0 1px 0 #2A2A2A;
+        box-shadow: inset 0 1px 0 #2A2A2A;
+        -webkit-box-shadow: inset 0 1px 0 #2A2A2A;
+        -moz-box-shadow: inset 0 1px 0 #2A2A2A;
+}
+
+
+
+
+.change-btn {
+    // z-index: 10;
+     width: 40px;
+    height: 40px;
+    color: #f7f7f7;
+    cursor: pointer;
+    text-align: center;
+    // background-color: $orange-color;
+    background-color: transparent;
+    
+    
+    border: none;
+    border-radius: 20%;
+    outline: none;
+    font-size: 30px;
+    transition: all .5s;
+    display: block;
+    position: absolute;
+    transition: all 250ms linear;
+   
+    top: 195px;
+        right: 5px;
+   
+    @media screen and (min-wodth:$desktop) {
+        top: 200px;
+            right: 5px;
+           
+    }
+
+    &:hover, &:focus {
+        transform: scale(1.1);
+        
+    }
+}
+
+
