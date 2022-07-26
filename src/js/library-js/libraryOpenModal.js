@@ -4,7 +4,6 @@ import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
 
 import getRefs from '../getRefs';
-const modal = document.querySelector('.modal');
 
 const movieAPI = new MovieAPI();
 
@@ -28,11 +27,10 @@ function onFilmCardClickHandle(evt) {
     .getFilms(id)
     .then(result => {
       const markup = renderModalMarkup(result);
-
-      modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
+      getRefs().modal.style.backgroundImage = `linear-gradient(to right, rgba(47, 48, 58, 0.9), rgba(47, 48, 58, 0.9)),
 		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
-      modal.style.backgroundSize = 'cover';
-
+      getRefs().modal.style.backgroundSize = 'cover';
+      getRefs().html.style.overflow = 'hidden';
       libraryGetRefs().modalFilm.innerHTML = markup;
     })
     // Adding functioning for buttons
@@ -62,11 +60,13 @@ function onModalCloseBtnHandle() {
 function onModalContainerClickHandle(evt) {
   if (evt.target === evt.currentTarget) {
     onModalCloseBtnHandle();
+    getRefs().html.style.overflow = 'visible';
   }
 }
 function onEscapeCloseHandle(evt) {
   if (evt.key === 'Escape') {
     onModalCloseBtnHandle();
+    getRefs().html.style.overflow = 'visible';
   }
 }
 function onAddButtonsFunctinal() {

@@ -9,6 +9,8 @@ const getRefs = () => {
     body: document.querySelector('body'),
     loader: document.getElementById('preloader'),
     loaderModal: document.getElementById('preloader--modal'),
+    modal: document.querySelector('.modal'),
+    html: document.querySelector('html'),
   };
 };
 export default getRefs;
