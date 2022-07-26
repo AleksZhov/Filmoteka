@@ -68,6 +68,7 @@ function onModalCloseBtnHandle() {
   libraryGetRefs().modalContainer.removeEventListener(
     'click',
     onModalContainerClickHandle
+    
   );
 }
 
@@ -99,6 +100,9 @@ function onAddButtonsFunctinal(result) {
     addToWatchedBtnRef.textContent = 'Remove from watched';
   }
   // --------------цей код додано мною
+  if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
+    queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
+  }
   const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
   if (queueMoviesArr.some(({ id }) => id === result.id)) {
@@ -145,6 +149,7 @@ const onAddToWatchedHandle = evt => {
 // --------------onAddToQueueHandle
 const onAddToQueueHandle = evt => {
   let filmObject = currentResult;
+  const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   if (localStorage.getItem(LOCAL_STORAGE_QUEUE) !== null) {
     queueMoviesArr = [...JSON.parse(localStorage.getItem(LOCAL_STORAGE_QUEUE))];
   }
