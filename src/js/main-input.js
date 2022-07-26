@@ -53,6 +53,11 @@ const objApi = {
 
  function paginationData(eventData) {
   objApi.page = eventData.page;
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
   if (objApi.value) {
     objApi
       .ApiSearch()
