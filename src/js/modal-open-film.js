@@ -32,6 +32,7 @@ function onFilmCardClickHandle(evt) {
 		url(https://image.tmdb.org/t/p/w500/${result.backdrop_path})`;
       getRefs().modal.style.backgroundSize = 'cover';
       getRefs().html.style.overflow = 'hidden';
+      getRefs().backToTop.style.display = 'none';
 
       onAddButtonsFunctinal(result);
     })
@@ -58,6 +59,7 @@ function onModalContainerClickHandle(evt) {
   if (evt.target === evt.currentTarget) {
     onModalCloseBtnHandle();
     getRefs().html.style.overflow = 'visible';
+    getRefs().backToTop.style.display = 'block';
   }
 }
 
@@ -65,6 +67,7 @@ function onEscapeCloseHandle(evt) {
   if (evt.key === 'Escape') {
     onModalCloseBtnHandle();
     getRefs().html.style.overflow = 'visible';
+    getRefs().backToTop.style.display = 'block';
   }
 }
 // -----------------------------------------------------------
