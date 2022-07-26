@@ -7,14 +7,12 @@ const movieAPI = new MovieAPI();
 
 const LOCAL_STORAGE_QUEUE_KEY = 'QUEUE';
 
-localStorage.getItem(LOCAL_STORAGE_QUEUE_KEY);
-const receivedDataWatched = JSON.parse(
-  localStorage.getItem(LOCAL_STORAGE_QUEUE_KEY)
-);
-
 libraryGetRefs().queueBtnRef.addEventListener('click', onQueueBtnHandle);
 
 function onQueueBtnHandle() {
+  const receivedDataWatched = JSON.parse(
+    localStorage.getItem(LOCAL_STORAGE_QUEUE_KEY)
+  );
   if (receivedDataWatched === null || receivedDataWatched.length === 0) {
     Notify.warning('Please go to home page and add movie to "Watched" list');
     libraryGetRefs().emptyListContainer.classList.remove('is-hidden');

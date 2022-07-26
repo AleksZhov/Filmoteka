@@ -6,14 +6,14 @@ import Notiflix, { Notify } from 'notiflix';
 const movieAPI = new MovieAPI();
 
 const LOCAL_STORAGE_WATCHED_KEY = 'WATCHED';
-localStorage.getItem(LOCAL_STORAGE_WATCHED_KEY);
-const receivedDataWatched = JSON.parse(
-  localStorage.getItem(LOCAL_STORAGE_WATCHED_KEY)
-);
+
 libraryGetRefs().watchedBthRef.addEventListener('click', onWatchBtnHandle);
 // onWatchBtnHandle();
 
 function onWatchBtnHandle() {
+  const receivedDataWatched = JSON.parse(
+    localStorage.getItem(LOCAL_STORAGE_WATCHED_KEY)
+  );
   if (receivedDataWatched === null || receivedDataWatched.length === 0) {
     Notify.warning('Please go to home page and add movie to "Watched" list');
     libraryGetRefs().emptyListContainer.classList.remove('is-hidden');

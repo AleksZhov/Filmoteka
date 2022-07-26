@@ -82,8 +82,6 @@ function onAddButtonsFunctinal(result) {
   }
 
   if (watchedMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
-
     addToWatchedBtnRef.textContent = 'Remove from watched';
   }
   // --------------цей код додано мною
@@ -93,8 +91,6 @@ function onAddButtonsFunctinal(result) {
   const addToQueueBtnRef = document.querySelector('.js-btn-queue');
   addToQueueBtnRef.addEventListener('click', onAddToQueueHandle);
   if (queueMoviesArr.some(({ id }) => id === result.id)) {
-    console.log('Check');
-
     addToQueueBtnRef.textContent = 'Remove from queue';
   }
 }
@@ -111,7 +107,7 @@ const onAddToWatchedHandle = evt => {
   }
   // check for unique value(id)
 
-  if (watchedMoviesArr.lenght === 0) {
+  if (watchedMoviesArr.length === 0) {
     watchedMoviesArr.push(filmObject);
     Notify.success('Film add to watched');
     addToWatchedBtnRef.textContent = 'Remove from watched';
