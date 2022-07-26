@@ -118,3 +118,24 @@ background: $backdrop-color;
 body.dark .alert_text {
     color: $white-color;
 }
+
+body.dark a.tui-page-btn.tui-prev,
+body.dark a.tui-page-btn.tui-next,
+body.dark span.tui-page-btn.tui-is-disabled.tui-prev,
+body.dark span.tui-page-btn.tui-is-disabled.tui-next,
+body.dark a.tui-page-btn.tui-first,
+body.dark a.tui-page-btn.tui-last,
+body.dark span.tui-page-btn.tui-is-disabled.tui-first,
+body.dark span.tui-page-btn.tui-is-disabled.tui-last,
+body.dark a.tui-page-btn.tui-prev-is-ellip.tui-first-child,
+body.dark a.tui-page-btn.tui-next-is-ellip.tui-last-child {
+    background-color: $primary-black-color;
+};
+
+body.dark .tui-page-btn.btnPages {
+    color: $primary-white-color;
+    background-color: $primary-black-color;
+}
+body.dark .tui-pagination a.tui-page-btn:hover {
+color: $primary-black-color;
+}
