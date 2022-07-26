@@ -115,4 +115,6 @@ background: $backdrop-color;
     }
 }
 
-
+body.dark .alert_text {
+    color: $white-color;
+}
