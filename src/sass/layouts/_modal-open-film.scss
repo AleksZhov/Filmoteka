@@ -37,6 +37,7 @@
     height: 500px;
     border-radius: 5px;
     text-align: left;
+    color: $primary-black-color;
     background-color: $white-color;
     @media screen and (max-width: $tablet) {
             overflow-y: scroll;
