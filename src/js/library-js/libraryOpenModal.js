@@ -2,10 +2,15 @@ import libraryGetRefs from './libraryGetRefs.js';
 import { MovieAPI } from '../movieAPI.js';
 import { renderModalMarkup } from '../renderModalMarkup';
 import Notiflix, { Notify } from 'notiflix';
+import { watchedPageLoad } from './loadWatchPage.js';
 
 import getRefs from '../getRefs';
-
 const movieAPI = new MovieAPI();
+
+window.onload = function (event) {
+  document.querySelector('.header_btn-Watched').click();
+  const btnLoadWatched = document.querySelector('.header_btn-Watched');
+};
 
 libraryGetRefs().containerListRef.addEventListener(
   'click',
