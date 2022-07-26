@@ -68,22 +68,19 @@ function onModalCloseBtnHandle() {
   libraryGetRefs().modalContainer.removeEventListener(
     'click',
     onModalContainerClickHandle
-    
   );
+  getRefs().html.style.overflow = 'visible';
+  getRefs().backToTop.style.display = 'block';
 }
 
 function onModalContainerClickHandle(evt) {
   if (evt.target === evt.currentTarget) {
     onModalCloseBtnHandle();
-    getRefs().html.style.overflow = 'visible';
-    getRefs().backToTop.style.display = 'block';
   }
 }
 function onEscapeCloseHandle(evt) {
   if (evt.key === 'Escape') {
     onModalCloseBtnHandle();
-    getRefs().html.style.overflow = 'visible';
-    getRefs().backToTop.style.display = 'block';
   }
 }
 function onAddButtonsFunctinal(result) {
