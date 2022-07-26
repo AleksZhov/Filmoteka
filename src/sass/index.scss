@@ -1,8 +1,6 @@
 @import './utils/variables';
 @import './utils/breakpoints';
 @import './utils/mixins';
-@import './utils/is-hidden';
-
 
 @import './base/reset';
 @import './components/container';
@@ -10,10 +8,10 @@
 @import './components/scroll-up';
 @import './components/error-img';
 
-
 @import './layouts/header';
 @import './layouts/footer';
-@import "./layouts/main-section";
+@import './layouts/main-section';
 @import './layouts/modal-open-film';
 
-@import "./components/dark_theme"
+@import './components/dark_theme';
+@import './utils/is-hidden';
