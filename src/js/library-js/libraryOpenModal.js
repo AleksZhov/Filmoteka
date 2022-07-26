@@ -6,10 +6,13 @@ import Notiflix, { Notify } from 'notiflix';
 import getRefs from '../getRefs';
 const movieAPI = new MovieAPI();
 
-window.onload = function (event) {
-  document.querySelector('.header_btn-Watched').click();
-  const btnLoadWatched = document.querySelector('.header_btn-Watched');
-};
+function watchedPageLoad() {
+  window.onload = function (event) {
+    document.querySelector('.header_btn-Watched').click();
+    const btnLoadWatched = document.querySelector('.header_btn-Watched');
+  };
+}
+watchedPageLoad();
 
 libraryGetRefs().containerListRef.addEventListener(
   'click',
