@@ -60,12 +60,14 @@ function onModalCloseBtnHandle() {
 function onModalContainerClickHandle(evt) {
   if (evt.target === evt.currentTarget) {
     onModalCloseBtnHandle();
+    console.log('click');
   }
 }
 
 function onEscapeCloseHandle(evt) {
   if (evt.key === 'Escape') {
     onModalCloseBtnHandle();
+    console.log('escape');
   }
 }
 // -----------------------------------------------------------
