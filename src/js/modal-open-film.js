@@ -53,21 +53,19 @@ function onModalCloseBtnHandle() {
     'click',
     onModalContainerClickHandle
   );
+  getRefs().html.style.overflow = 'visible';
+  getRefs().backToTop.style.display = 'block';
 }
 
 function onModalContainerClickHandle(evt) {
   if (evt.target === evt.currentTarget) {
     onModalCloseBtnHandle();
-    getRefs().html.style.overflow = 'visible';
-    getRefs().backToTop.style.display = 'block';
   }
 }
 
 function onEscapeCloseHandle(evt) {
   if (evt.key === 'Escape') {
     onModalCloseBtnHandle();
-    getRefs().html.style.overflow = 'visible';
-    getRefs().backToTop.style.display = 'block';
   }
 }
 // -----------------------------------------------------------
@@ -107,7 +105,7 @@ const onAddToWatchedHandle = evt => {
   }
   // check for unique value(id)
 
-  if (watchedMoviesArr.length === 0) {
+  if (watchedMoviesArr.leng === 0) {
     watchedMoviesArr.push(filmObject);
     Notify.success('Film add to watched');
     addToWatchedBtnRef.textContent = 'Remove from watched';
