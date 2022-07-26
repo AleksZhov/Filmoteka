@@ -1,24 +1,34 @@
 <section class="header">
-    <div class="container">
-        <ul class="header_list">
-            <li class="header_item header_item--logo">
-                <svg class="icon-films" width="24" height="24">
-                    <use href="./images/sprite.svg#icon-logo"></use>
-                </svg>
-                <a href="index.html" class="header_logo">
-                    Filmoteka
-                </a>
-            </li>
-            <li class="header_item header_item--margin current"><a class="header_link" href="index.html">HOME</a></li>
-            <li class="header_item"><a class="header_link" href="mylibrary.html">LIBRARY</a></li>
-        </ul>
-        <form class="header_form">
-            <input class="header_input" type="text" name="search" autofocus placeholder="Movie search" />
-            <svg class="header_icon" width="12px" height="12px">
-                <use href='./images/sprite.svg#icon-search'></use>
-            </svg>
-        </form>
-        <p id="noName" class="is-hidden-text header_warning">Search result not successful. Enter the correct movie
-            nameand</p>
-    </div>
+  <div class="container">
+    <button class="change-btn" id="change-theme-btn"></button>
+    <ul class="header_list">
+      <li class="header_item header_item--logo">
+        <svg class="icon-films" width="24" height="24">
+          <use href="./images/sprite.svg#icon-logo"></use>
+        </svg>
+        <a href="index.html" class="header_logo"> Filmoteka </a>
+      </li>
+      <li class="header_item header_item--margin current">
+        <a class="header_link" href="index.html">HOME</a>
+      </li>
+      <li class="header_item">
+        <a class="header_link" href="mylibrary.html">LIBRARY</a>
+      </li>
+    </ul>
+    <form class="header_form">
+      <input
+        class="header_input"
+        type="text"
+        name="search"
+        autofocus
+        placeholder="Movie search"
+      />
+      <svg class="header_icon" width="12px" height="12px">
+        <use href="./images/sprite.svg#icon-search"></use>
+      </svg>
+    </form>
+    <p id="noName" class="is-hidden-text header_warning">
+      Search result not successful. Enter the correct movie nameand
+    </p>
+  </div>
 </section>
